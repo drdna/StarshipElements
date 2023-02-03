@@ -7,9 +7,9 @@ The B71 genome contains a large Starship element that is 349.5 kb in length but 
 ```bash
 blastn -query B71Starship.fasta -subject MoRepeats.fasta -evalue 1e-20 -max_target_seqs 20000 -outfmt '6 qseqid sseqid qstart qend sstart send btop' > B71Starship.MoRepeats.BLAST
 ```
-2. Use the [Run_RMSA.pl](/scripts/Run_RMSA.pl) script to mask repeated regions within the Starship sequence:
+2. Use the [Run_RMSA.pl](/scripts/CrossMask.pl) script to mask repeated regions within the Starship sequence:
 ```bash
-perl Run_RMSA.pl B71Starship.fasta B71Starship.MoRepeats.BLAST
+perl CrossMask.pl B71Starship.fasta B71Starship.MoRepeats.BLAST
 ```
 3. De-RIP the Starship element using the [DeRIP.pl](/scripts/DeRIP.pl) script:
 ```bash
