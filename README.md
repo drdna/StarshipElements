@@ -1,17 +1,17 @@
 # A repository of methods and codes for analyzing Starship Transposons in *Pyricularia oryzae*
 
 ## DeRIP'ing a presumed full-length element that is present in several genomes
-The B71 genome contains a large Starship element that is 349.5 kb in length but genome comparisons using BLAST searched revealed a large number of transition mutations. Comparison with progenitor strains revealed that most of these mutations arose in a series of recent matings that ultimately resulted in the evolution of the wheat blast pathogen. By its nature, RIP increases the AT-content of its target sequences, which in turn results in the generation of a large number of premature stop codons, that negatively impact the prediction of genes within the Starship elements. Therefore, we sought to De-RIP a canonical element in B71. Briefly, we masked high copy sequences corresponding to other transposon "hitchhikers" with the Starship sequence and then BLASTed the masked element against several *P. oryzae* genome assemblies. Then, we used a custom script to convert As and Ts back to Gs and Cs, respectively, if there were at least 10 BLAST alignments that supported the presence of a G/C at the position in question.
+The B71 genome contains a large Starship element that is 349.5 kb in length but genome comparisons using BLAST searched revealed a large number of transition mutations. Comparison with progenitor strains revealed that most of these mutations arose in a series of recent matings that ultimately resulted in the evolution of the wheat blast pathogen. By its nature, RIP increases the AT-content of its target sequences, which in turn results in the generation of a large number of premature stop codons, that negatively impact the prediction of genes within the Starship elements. Therefore, we sought to De-RIP a canonical element in B71. Briefly, we masked high copy sequences corresponding to other transposon "hitchhikers" with the Starship sequence and then BLASTed the masked element against several *P. oryzae* genome assemblies. Then, we used a custom script to convert As and Ts back to Gs and Cs, respectively, but only if there were at least 10 BLAST alignments that supported the presence of a G/C at the position in question.
 
 1. BLAST the B71 Starship sequence against all know repeats within the P. oryzae genome:
 ```bash
 blastn -query B71Starship.fasta -subject MoRepeats.fasta -evalue 1e-20 -max_target_seqs 20000 -outfmt '6 qseqid sseqid qstart qend sstart send btop' > B71Starship.MoRepeats.BLAST
 ```
-2. Use the [Run_RMSA.pl](/scripts/CrossMask.pl) script to mask repeated regions within the Starship sequence:
+2. Use the [CrossMask.pl](/scripts/CrossMask.pl) script to mask repeated regions within the Starship sequence:
 ```bash
 perl CrossMask.pl B71Starship.fasta B71Starship.MoRepeats.BLAST
 ```
-3. BLAST the masked Starship against an adhoc selection of *P. oryzae* genome assemblies (preferably non wheat blast/Lolium pathogens to maximize chance of not finding other RIPd starships):
+3. BLAST the masked Starship against an adhoc selection of *P. oryzae* genome assemblies (preferably non wheat blast/*Lolium* pathogens to minimize likelihood of comparing against other RIPd starships):
 ```bash
 for f in `ls RAW_GENOMEs/[CEUZ]*fasta`; do blastn -query B71StarshipMasked.fasta -subject $f -evalue 1e-100 -outfmt 0 >> B71Starships.CEUZ.BLAST; done 
 ```
