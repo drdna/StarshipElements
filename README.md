@@ -15,7 +15,7 @@ perl CrossMask.pl B71Starship.fasta B71Starship.MoRepeats.BLAST
 ```bash
 for f in `ls RAW_GENOMEs/[CEUZ]*fasta`; do blastn -query B71StarshipMasked.fasta -subject $f -evalue 1e-100 -outfmt 0 >> B71Starships.CEUZ.BLAST; done 
 ```
-4. De-RIP the Starship element using the [DeRIP.pl](/scripts/DeRIP.pl) script:
+4. Use the alignment information in the resulting BLAST report to inform the [DeRIP.pl](/scripts/DeRIP.pl) script which sites in the Starship element it should de-RIP:
 ```bash
 perl DeRIP.pl B71Starships.CEUZ.BLAST B71Starship_masked.fasta
 ```
