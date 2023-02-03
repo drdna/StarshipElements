@@ -1,12 +1,14 @@
 #!/usr/bin/perl
 
 #---------------------------------------------------------------------
+# Written by Mark Farman
 
 # Identifies and reports transition mutations in the query and subject sequences
 
 # Usage:  DeRIP.pl <BLAST_file> <SeqToBeDeRIPd.fasta>
 
 #---------------------------------------------------------------------
+die "Usage:  DeRIP.pl <BLAST_file> <SeqToBeDeRIPd.fasta>\n" if @ARGV < 2;
 
 open(BLAST, "$ARGV[0]") or die "Cannot open file\n";
 
