@@ -20,7 +20,7 @@ for f in `ls RAW_GENOMEs/[CEUZ]*fasta`; do blastn -query B71StarshipMasked.fasta
 perl DeRIP.pl B71Starships.CEUZ.BLAST B71Starship_masked.fasta
 ```
 This produced the DeRIP'd sequence: [B71StarshipMaskedDeRIPd.fasta](/data/B71StarshipMaskedDeRIPd.fasta)
-## Extracting genomic sequences flanking Starship insertions to examine 5S rRNA targets in other genomes
+## Extracting genomic sequences flanking Starship insertions to examine 5S rRNA gene targets in other genomes
 1. BLAST 5S rRNA genes against all genome assemblies
 ```bash
 for f in `ls MINION_GENOMES/*fasta`; do blastn -query 5SrRNA.fasta -subject $f -outfmt 6 > 5SrRNA.${f/_*/}.BLAST; done
