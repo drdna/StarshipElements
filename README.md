@@ -1,1 +1,18 @@
 # A repository of methods and codes for analyzing Starship Transposons in *Pyricularia oryzae*
+
+## DeRIP'ing a presumed full-length element that is present in several genomes
+The B71 genome contains a large Starship element that is 349.5 kb in length but genome comparisons using BLAST searched revealed a large number of transition mutations. Comparison with progenitor strains revealed that most of these mutations arose in a series of recent matings that ultimately resulted in the evolution of the wheat blast pathogen. By its nature, RIP increases the AT-content of its target sequences, which in turn results in the generation of a large number of premature stop codons, that negatively impact the prediction of genes within the Starship elements. Therefore, we sought to De-RIP a canonical element in B71. Briefly, we masked high copy sequences corresponding to other transposon "hitchhikers" with the Starship sequence and then BLASTed the masked element against several *P. oryzae* genome assemblies. Then, we use a custom script to convert As and Ts back to Gs and Cs, respectively, if there were at least 10 BLAST alignments where there was an G/C at the position in question.
+
+1. BLAST the B71 Starship sequence against all know repeats within the P. oryzae genome:
+```bash
+blastn -query B71Starship.fasta -subject MoRepeats.fasta -evalue 1e-20 -max_target_seqs 20000 -outfmt '6 qseqid sseqid qstart qend sstart send btop' > B71Starship.MoRepeats.BLAST
+```
+2. Use the [Run_RMSA.pl](/scripts/Run_RMSA.pl) script to mask repeated regions within the Starship sequence:
+```bash
+perl Run_RMSA.pl B71Starship.fasta B71Starship.MoRepeats.BLAST
+```
+3. De-RIP the Starship element using the [DeRIP.pl](/scripts/DeRIP.pl) script:
+```bash
+perl DeRIP.pl B71Starship.MoRepeats.BLAST B71Starship_masked.fasta
+```
+This produced the DeRIP'd sequence: [B71StarshipMaskedDeRIPd.fasta](/data/B71StarshipMaskedDeRIPd.fasta)
