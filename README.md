@@ -11,7 +11,7 @@ blastn -query B71Starship.fasta -subject MoRepeats.fasta -evalue 1e-20 -max_targ
 ```bash
 perl CrossMask.pl B71Starship.fasta B71Starship.MoRepeats.BLAST
 ```
-3. BLAST the masked Starship against an adhoc selection of *P. oryzae* genome assemblies (preferably non wheat blast/Lolium pathogens to maximize chance of not finding other RIPd starhsips):
+3. BLAST the masked Starship against an adhoc selection of *P. oryzae* genome assemblies (preferably non wheat blast/Lolium pathogens to maximize chance of not finding other RIPd starships):
 ```bash
 for f in `ls RAW_GENOMEs/[CEUZ]*fasta`; do blastn -query B71StarshipMasked.fasta -subject $f -evalue 1e-100 -outfmt 0 >> B71Starships.CEUZ.BLAST; done 
 ```
