@@ -20,6 +20,12 @@ for f in `ls RAW_GENOMEs/[CEUZ]*fasta`; do blastn -query B71StarshipMasked.fasta
 perl DeRIP.pl B71Starships.CEUZ.BLAST B71Starship_masked.fasta
 ```
 This produced the DeRIP'd sequence: [B71StarshipMaskedDeRIPd.fasta](/data/B71StarshipMaskedDeRIPd.fasta)
+## Gene prediction in Starship Transposons
+1. mRNA transcript and protein sequences were extracted fron the Fgenesh output files using the [Fgenesh_to_mRNA_protein.pl](/scripts/Fgenesh_to_mRNA_protein.pl) script:
+```bash
+perl Fgenesh_to_mRNA_protein.pl B71Starship.fgenesh.out
+```
+This produces two output files. One with the the transcript sequences and the other with proteins.
 ## Extracting genomic sequences flanking Starship insertions to examine 5S rRNA gene targets in other genomes
 1. BLAST 5S rRNA genes against all genome assemblies
 ```bash
