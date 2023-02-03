@@ -11,8 +11,12 @@ blastn -query B71Starship.fasta -subject MoRepeats.fasta -evalue 1e-20 -max_targ
 ```bash
 perl CrossMask.pl B71Starship.fasta B71Starship.MoRepeats.BLAST
 ```
-3. De-RIP the Starship element using the [DeRIP.pl](/scripts/DeRIP.pl) script:
+3. BLAST the masked Starship against an adhoc selection of *P. oryzae* genome assemblies (preferably non wheat blast/Lolium pathogens to maximize chance of not finding other RIPd starhsips):
 ```bash
-perl DeRIP.pl B71Starship.MoRepeats.BLAST B71Starship_masked.fasta
+for f in `ls RAW_GENOMEs/[CEUZ]*fasta`; do blastn -query B71StarshipMasked.fasta -subject $f -evalue 1e-100 -outfmt 0 >> B71Starships.CEUZ.BLAST; done 
+```
+4. De-RIP the Starship element using the [DeRIP.pl](/scripts/DeRIP.pl) script:
+```bash
+perl DeRIP.pl B71Starships.CEUZ.BLAST B71Starship_masked.fasta
 ```
 This produced the DeRIP'd sequence: [B71StarshipMaskedDeRIPd.fasta](/data/B71StarshipMaskedDeRIPd.fasta)
