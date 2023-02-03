@@ -4,12 +4,14 @@
 
 # Identifies and reports transition mutations in the query and subject sequences
 
-# Usage:  DeRIP_repeats.pl BLAST_file Repeats_directory
+# Usage:  DeRIP.pl <BLAST_file> <SeqToBeDeRIPd.fasta>
 
 #---------------------------------------------------------------------
 
 open(BLAST, "$ARGV[0]") or die "Cannot open file\n";
 
+
+# uncomment next line and corresponding print line below (and provide argument to script) if file listing De-RIPd sites is wanted
 # open(RIPd_SITES_LIST, '>', $ARGV[2]);
 
 print "Processing\n";
