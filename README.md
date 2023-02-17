@@ -34,7 +34,7 @@ This produces two output files. One with the the transcript sequences and the ot
 
 ## Identification of secreted proteins among starship cargo:
 
-1. [Multifasta files](/data/StarshipFastas/) for each starship element were uploaded into the SignalP6 server for identification of candidate secreted proteins.
+1. [Multifasta files](/data/StarshipFastas/) for each starship element were uploaded into the [SignalP6 server](https://services.healthtech.dtu.dk/service.php?SignalP) for identification of candidate secreted proteins.
 
 ## Extracting genomic sequences flanking Starship insertions to examine 5S rRNA gene targets in other genomes
 1. BLAST 5S rRNA genes against all genome assemblies
