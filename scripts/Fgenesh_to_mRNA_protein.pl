@@ -2,7 +2,7 @@
 
 open(FILE, $ARGV[0]);
 
-$ShortID = $ARGV[0];
+($ShortID = $ARGV[0]) =~ s/\..+//;
 
 open(GENES, '>', "$ShortID"."_genes.fasta");
 
@@ -25,6 +25,8 @@ while($Line = <FILE>) {
 			$Type = ""
 
 		}
+		
+		$Line =~ s/ +/_/g;
 
 	}
 	
