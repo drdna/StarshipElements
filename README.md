@@ -29,6 +29,13 @@ This produced the DeRIP'd sequence: [B71StarshipMaskedDeRIPd.fasta](/data/B71Sta
 perl Fgenesh_to_mRNA_protein.pl B71Starship.fgenesh.out
 ```
 This produces two output files. One with the the transcript sequences and the other with proteins.
+
+2. The protein sequences were use to search NCBI using blastp
+
+## Identification of secreted proteins among starship cargo:
+
+1. [Multifasta files](/data/StarshipFastas/) for each starship element were uploaded into the SignalP6 server for identification of candidate secreted proteins.
+
 ## Extracting genomic sequences flanking Starship insertions to examine 5S rRNA gene targets in other genomes
 1. BLAST 5S rRNA genes against all genome assemblies
 ```bash
