@@ -24,7 +24,7 @@ perl DeRIP.pl B71Starships.CEUZ.BLAST B71Starship_masked.fasta
 This produced the DeRIP'd sequence: [B71StarshipMaskedDeRIPd.fasta](/data/B71StarshipMaskedDeRIPd.fasta)
 
 ## Gene prediction in Starship Transposons
-1. mRNA transcript and protein sequences were extracted fron the Fgenesh output files using the [Fgenesh_to_mRNA_protein.pl](/scripts/Fgenesh_to_mRNA_protein.pl) script:
+1. mRNA transcript and protein sequences were extracted from the Fgenesh output files using the [Fgenesh_to_mRNA_protein.pl](/scripts/Fgenesh_to_mRNA_protein.pl) script:
 ```bash
 perl path/to/Fgenesh_to_mRNA_protein.pl path/to/B71Starship.fgenesh.out
 ```
