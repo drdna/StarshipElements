@@ -2,7 +2,7 @@
 
 ## Retrieving 5S rRNA genes plus flanks
 
-1. Blast 5S rRNA gene sequence against target genome:
+1. Blast [5S rRNA gene sequence](/data/5SrRNA.fasta) against target genome:
 ```bash
 blastn -query 5SrRNA.fasta -subject MINION/target-genome.fasta -outfmt 6 > 5SrRNA.target-genome.BLAST
 ```
