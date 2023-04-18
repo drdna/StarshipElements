@@ -1,5 +1,17 @@
 # A repository of methods and codes for analyzing Starship Transposons in *Pyricularia oryzae*
 
+## Retrieving 5S rRNA genes plus flanks
+
+1. Blast 5S rRNA gene sequence against target genome:
+```bash
+blastn -query 5SrRNA.fasta -subject MINION/target-genome.fasta -outfmt 6 > 5SrRNA.target-genome.BLAST
+```
+2. Use [5SrRNA_genes_flanks.pl](/scripts/5SrRNA_genes_flanks.pl) script to retrieve intact 5S rRNA gene sequences & 5S rRNA gene sequences + flanks (200 bp):
+```bash
+perl 5SrRNA_genes_flanks.pl 5SrRNA.target-genome.BLAST target-genome.fasta
+```
+This will create two files, one named target-genome_5S_genes.fasta and the other, target-genome_5S_genes_plus.fasta
+
 # Starship Gene Predictions
 
 ## DeRIP'ing a presumed full-length element that is present in several genomes
