@@ -17,3 +17,4 @@ b. Make module executable:
 ```bash
 chmod a+x path/to/module-folder/moduleName.pm
 ```
+c. Run code that uses module.
