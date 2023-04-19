@@ -23,7 +23,7 @@ blastn -query B71Starship.fasta -subject MoRepeats.fasta -evalue 1e-20 -max_targ
 ```
 2. Use the [CrossMask.pl](/scripts/CrossMask.pl) script to mask repeated regions within the Starship sequence:
 ```bash
-perl CrossMask.pl B71Starship.fasta B71Starship.MoRepeats.BLAST
+perl CrossMask.pl B71Starship.MoRepeats.BLAST B71Starship.fasta
 ```
 3. BLAST the masked Starship against an adhoc selection of *P. oryzae* genome assemblies (preferably non wheat blast/*Lolium* pathogens to minimize likelihood of comparing against other RIPd starships):
 ```bash
