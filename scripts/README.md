@@ -6,3 +6,14 @@ Simply point the [fasta-break.pl](/scripts/fasta-break.pl) script to the multifa
 ```bash
 perl fasta-break.pl MultiFasta.fasta SingleFastaDirectoryName
 ```
+
+## 2. PERL modules used in various scripts.
+
+a. Install module in PERL search path, or add location to path:
+```bash
+export PERL5LIB=$PERL5LIB:path/to/module-folder
+```
+b. Make module executable:
+```bash
+chmod a+x path/to/module-folder/moduleName.pm
+```
