@@ -33,7 +33,7 @@ blastn -query CD156_5S_genes_plus.fasta -subject B71v2sh.fasta -outfmt 6 | awk '
 ```
 3. For automation:
 ```bash
-for genome in `ls *fasta`; do g=${genome/\.fasta/}; blastn -query ${g}_5S_genes_plus.fasta -subject ${g}.fasta -outfmt 6 | awk '$4 > 400'; blastn -query ${g}_5S_genes_plus.fasta -subject ${g}.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280'; done
+for genome in `ls *fasta`; do g=${genome/_*/}; blastn -query ${g}_5S_genes_plus.fasta -subject ${g}.fasta -outfmt 6 | awk '$4 > 400'; blastn -query ${g}_5S_genes_plus.fasta -subject ${g}.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280'; done
 ``` 
 
 # Starship Gene Predictions
