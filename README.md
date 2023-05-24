@@ -14,6 +14,11 @@ perl 5SrRNA_genes_flanks.pl 5SrRNA.target-genome.BLAST target-genome.fasta
 ```
 This will create two files, one named target-genome_5S_genes.fasta and the other, target-genome_5S_genes_plus.fasta
 
+3. For automation:
+```bash
+for genome in `ls GenomeDir/*fasta`; do g=${genome/\.fasta/}; perl 5SrRNA_genes_flanks.pl 5SrRNA.${g}.BLAST GenomeDir/target-genome.fasta; done
+``` 
+
 ## Cross-genome comparison of 5S rRNA gene targets
 
 1. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify matches that span the entire 5S rRNA gene locus:
@@ -24,6 +29,10 @@ blastn -query CD156_5S_genes_plus.fasta -subject B71v2sh.fasta -outfmt 6 | awk '
 ```bash
 blastn -query CD156_5S_genes_plus.fasta -subject B71v2sh.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280'
 ```
+3. For automation:
+```bash
+for genome in `ls GenomeDir/*fasta`; do blastn -query CD156_5S_genes_plus.fasta -subject B71v2sh.fasta -outfmt 6 | awk '$4 > 400'; blastn -query CD156_5S_genes_plus.fasta -subject B71v2sh.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280'; done
+``` 
 
 # Starship Gene Predictions
 
