@@ -1,6 +1,6 @@
 # A repository of methods and codes for analyzing Starship Transposons in *Pyricularia oryzae*
 
-# Characterization of 5s rRNA gene targets
+# Characterization of 5s rRNA gene targets (Brianna)
 
 ## Retrieving 5S rRNA genes plus flanks
 
@@ -19,7 +19,7 @@ This will create two files, one named target-genome_5S_genes.fasta and the other
 for genome in `ls GenomeDir/*fasta`; do g=${genome/\.fasta/}; perl 5SrRNA_genes_flanks.pl 5SrRNA.${g}.BLAST GenomeDir/target-genome.fasta; done
 ``` 
 
-## Cross-genome comparison of 5S rRNA gene targets
+## Cross-genome comparison of 5S rRNA gene targets (Brianna)
 
 1. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify matches that span the entire 5S rRNA gene locus:
 ```bash
