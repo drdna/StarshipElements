@@ -6,7 +6,7 @@
 
 1. Blast [5S rRNA gene sequence](/data/5SrRNA.fasta) against target genome:
 ```bash
-blastn -query 5SrRNA.fasta -subject MINION/target-genome.fasta -outfmt 6 > 5SrRNA.target-genome.BLAST
+cd GenomeDir blastn -query 5SrRNA.fasta -subject MINION/target-genome.fasta -outfmt 6 > 5SrRNA.target-genome.BLAST
 ```
 2. Use [5SrRNA_genes_flanks.pl](/scripts/5SrRNA_genes_flanks.pl) script to retrieve intact 5S rRNA gene sequences & 5S rRNA gene sequences + flanks (200 bp):
 ```bash
@@ -23,6 +23,7 @@ for genome in `ls GenomeDir/*fasta`; do g=${genome/\.fasta/}; perl 5SrRNA_genes_
 
 1. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify matches that span the entire 5S rRNA gene locus:
 ```bash
+cd GenomeDir
 blastn -query CD156_5S_genes_plus.fasta -subject B71v2sh.fasta -outfmt 6 | awk '$4 > 400'
 ```
 2. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify 5S rRNA genes with Starship insertions:
@@ -31,7 +32,7 @@ blastn -query CD156_5S_genes_plus.fasta -subject B71v2sh.fasta -outfmt 6 | awk '
 ```
 3. For automation:
 ```bash
-for genome in `ls GenomeDir/*fasta`; do blastn -query CD156_5S_genes_plus.fasta -subject B71v2sh.fasta -outfmt 6 | awk '$4 > 400'; blastn -query CD156_5S_genes_plus.fasta -subject B71v2sh.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280'; done
+for genome in `ls *fasta`; do g=${genome/\.fasta/}; blastn -query ${g}_5S_genes_plus.fasta -subject ${g}.fasta -outfmt 6 | awk '$4 > 400'; blastn -query ${g}_5S_genes_plus.fasta -subject ${g}.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280'; done
 ``` 
 
 # Starship Gene Predictions
