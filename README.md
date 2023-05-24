@@ -6,7 +6,8 @@
 
 1. Blast [5S rRNA gene sequence](/data/5SrRNA.fasta) against target genome:
 ```bash
-cd GenomeDir blastn -query 5SrRNA.fasta -subject MINION/target-genome.fasta -outfmt 6 > 5SrRNA.target-genome.BLAST
+cd GenomeDir
+blastn -query 5SrRNA.fasta -subject MINION/target-genome.fasta -outfmt 6 > 5SrRNA.target-genome.BLAST
 ```
 2. Use [5SrRNA_genes_flanks.pl](/scripts/5SrRNA_genes_flanks.pl) script to retrieve intact 5S rRNA gene sequences & 5S rRNA gene sequences + flanks (200 bp):
 ```bash
