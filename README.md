@@ -2,39 +2,45 @@
 
 # Characterization of 5s rRNA gene targets (Brianna)
 
-## Retrieving 5S rRNA genes plus flanks
+## A. Retrieving 5S rRNA genes plus flanks from each genome
 
 1. Blast [5S rRNA gene sequence](/data/5SrRNA.fasta) against target genome:
 ```bash
 cd GenomeDir
-blastn -query 5SrRNA.fasta -subject MINION/target-genome.fasta -outfmt 6 > 5SrRNA.target-genome.BLAST
+blastn -query 5SrRNA.fasta -subject target1.fasta -outfmt 6 > 5SrRNA.target1.BLAST
 ```
 2. Use [5SrRNA_genes_flanks.pl](/scripts/5SrRNA_genes_flanks.pl) script to retrieve intact 5S rRNA gene sequences & 5S rRNA gene sequences + flanks (200 bp):
 ```bash
-perl 5SrRNA_genes_flanks.pl 5SrRNA.target-genome.BLAST target-genome.fasta
+perl 5SrRNA_genes_flanks.pl 5SrRNA.target1.BLAST target1.fasta
 ```
-This will create two files, one named target-genome_5S_genes.fasta and the other, target-genome_5S_genes_plus.fasta
+This will create two files, one named target1_5S_genes.fasta and the other, target1_5S_genes_plus.fasta
 
-3. For automation:
+Note: To automate 5S gene retrieval, use 'for' loop to iterate through genome files:
 ```bash
-for genome in `ls GenomeDir/*fasta`; do g=${genome/\.fasta/}; perl 5SrRNA_genes_flanks.pl 5SrRNA.${g}.BLAST GenomeDir/target-genome.fasta; done
+for genome in `ls GenomeDir/*fasta`; do g=${genome/\.fasta/}; perl 5SrRNA_genes_flanks.pl 5SrRNA.${g}.BLAST $genome; done
 ``` 
 
-## Cross-genome comparison of 5S rRNA gene targets (Brianna)
+## B. Cross-genome comparison of 5S rRNA gene targets (Brianna)
 
 1. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify matches that span the entire 5S rRNA gene locus:
 ```bash
 cd GenomeDir
-blastn -query CD156_5S_genes_plus.fasta -subject B71v2sh.fasta -outfmt 6 | awk '$4 > 400'
+blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk '$4 > 400' > target1_5S.target2.BLAST
 ```
 2. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify 5S rRNA genes with Starship insertions:
 ```bash
-blastn -query CD156_5S_genes_plus.fasta -subject B71v2sh.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280'
+blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280'
 ```
-3. For automation:
+## C. Search for new 5S in other genomes:
+
+1. Mask 5S loci that have already been characterized:
 ```bash
-for genome in `ls *fasta`; do g=${genome/_*/}; blastn -query ${g}_5S_genes_plus.fasta -subject ${g}.fasta -outfmt 6 | awk '$4 > 400'; blastn -query ${g}_5S_genes_plus.fasta -subject ${g}.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280'; done
-``` 
+perl CrossMask target1_5S.target2.BLAST target2.fasta > target2_5S_masked.fasta
+```
+2. Search for new 5S rRNA genes in masked genomes (here we are repeating step A above but with masked genome:
+```bash
+blastn -query 5SrRNA.fasta -subject target2_5S_masked.fasta -outfmt 6 > 5SrRNA.target2_5S_masked.BLAST
+```
 
 # Starship Gene Predictions
 
