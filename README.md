@@ -37,7 +37,7 @@ blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk
 ```bash
 perl CrossMask target1_5S.target2.BLAST target2.fasta > target2_5S_masked.fasta
 ```
-2. Search for new 5S rRNA genes in masked genomes (here we are repeating step A above but with masked genome:
+2. Search for new 5S rRNA genes in masked genomes (here we are repeating step A above but with the masked genome we just created):
 ```bash
 blastn -query 5SrRNA.fasta -subject target2_5S_masked.fasta -outfmt 6 > 5SrRNA.target2_5S_masked.BLAST
 ```
