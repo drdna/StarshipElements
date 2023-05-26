@@ -7,8 +7,6 @@
 
 die "Usage: perl CrossMask.pl <blast-file> <sequence-to-mask>\n" if @ARGV != 2;
 
-use FetchGenome;
-
 open(BLAST, $ARGV[0]) || die "Can't find BLASTfile\n";
 
 while($B = <BLAST>) {
@@ -36,7 +34,7 @@ while($B = <BLAST>) {
 close BLAST;
 
   
-$GenomeHashRef = FetchGenome::getSeqs($ARGV[1]);
+$GenomeHashRef = getSeqs($ARGV[1]);
 
 %GenomeHash = %{$GenomeHashRef};
 
@@ -57,6 +55,55 @@ foreach $Sequence (keys %GenomeHash) {
 foreach $Sequence (keys %GenomeHash) {
 
   print ">$Sequence\n$GenomeHash{$Sequence}\n";
+
+}
+
+sub getSeqs {
+
+  my %GenomeHash;
+
+  my $EOL = $/;
+
+  $/ = undef;
+
+  my $genomeName = $_[0];
+ 
+  my $stripID = $_[1];
+
+  open(GENOME, "$genomeName") || die "Can't open genome file\n";
+
+  my $wholeRecord = <GENOME>;
+
+  my @GenomeList = split(/>/, $wholeRecord);
+
+  shift @GenomeList;
+
+  foreach my $fastaRecord (@GenomeList) {
+
+    my ($ID, $Seq) = split(/\n/, $fastaRecord, 2);
+
+#    $ID =~ s/[^A-Za-z-0-9.]|//g;
+
+## following line can be uncommented if sequence header prefix (but not number) differs between the genome being studied and the alignstring.
+
+    $ID =~ s/.+?([0-9]+)$/$1/ unless $stripID eq 'no';
+
+
+#    $ID =~ s/ +.+//;
+
+    $Seq =~ s/[^A-Za-z-]//g;
+
+    $Seq =~ s/\r//g;
+
+    $GenomeHash{$ID} = $Seq
+
+  }
+
+  close GENOME;
+
+  $/ = $EOL;
+
+  return(\%GenomeHash)
 
 }
 
