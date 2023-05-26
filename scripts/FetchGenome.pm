@@ -48,14 +48,13 @@ sub getSeqs {
 
     my ($ID, $Seq) = split(/\n/, $fastaRecord, 2);
 
-    $ID =~ s/[^A-Za-z-0-9.]|//g;
+#    $ID =~ s/[^A-Za-z-0-9.]|//g;
 
 ## following line can be uncommented if sequence header prefix (but not number) differs between the genome being studied and the alignstring.
 
+    $ID =~ s/ +.+//;
+
     $ID =~ s/.+?([0-9]+)$/$1/ unless $stripID eq 'no';
-
-
-#    $ID =~ s/ +.+//;
 
     $Seq =~ s/[^A-Za-z-]//g;
 
@@ -117,4 +116,3 @@ sub getLens {
 }
 
 1;
-
