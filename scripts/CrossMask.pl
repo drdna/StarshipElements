@@ -5,6 +5,8 @@
 # Sequence to mask must be blast query (and have no spaces in header lines)
 # blast -outfmt must be '6 qseqid sseqid qstart qend sstart send btop'
 
+use FetchGenome;
+
 die "Usage: perl CrossMask.pl <blast-file> <sequence-to-mask>\n" if @ARGV != 2;
 
 open(BLAST, $ARGV[0]) || die "Can't find BLASTfile\n";
