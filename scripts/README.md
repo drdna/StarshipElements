@@ -9,7 +9,7 @@ perl fasta-break.pl MultiFasta.fasta SingleFastaDirectoryName
 
 ## 2. PERL modules used in various scripts.
 
-a. Install module in PERL search path, or add location to path:
+a. Install module in PERL search path, or add location to path by adding this line to your .bash_profile:
 ```bash
 export PERL5LIB=$PERL5LIB:path/to/module-folder
 ```
