@@ -51,7 +51,7 @@ The B71 genome contains a large Starship element that is 349.5 kb in length but 
 ```bash
 blastn -query B71Starship.fasta -subject MoRepeats.fasta -evalue 1e-20 -max_target_seqs 20000 -outfmt '6 qseqid sseqid qstart qend sstart send btop' > B71Starship.MoRepeats.BLAST
 ```
-2. Use the [CrossMask.pl](/scripts/CrossMask.pl) script to mask repeated regions within the Starship sequence (CrossMask uses the [FetchGenome module](https://github.com/drdna/StarshipElements/tree/main/scripts#2-perl-modules-used-in-various-scripts) that must be installed in a location in the PERL libraries path, and made executable):
+2. Use the [CrossMask.pl](/scripts/CrossMask.pl) script to mask repeated regions within the Starship sequence (CrossMask uses the [FetchGenome module](scripts/README.md) that must be installed in a location in the PERL libraries path, and made executable):
 ```bash
 perl CrossMask.pl B71Starship.MoRepeats.BLAST B71Starship.fasta
 ```
