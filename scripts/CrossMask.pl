@@ -36,7 +36,7 @@ while($B = <BLAST>) {
 close BLAST;
 
   
-$GenomeHashRef = getSeqs($ARGV[1]);
+$GenomeHashRef = FetchGenome::getSeqs($ARGV[1]);
 
 %GenomeHash = %{$GenomeHashRef};
 
