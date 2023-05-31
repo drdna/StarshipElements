@@ -1,5 +1,11 @@
 # A repository of methods and codes for analyzing Starship Transposons in *Pyricularia oryzae*
 
+# Determine genome lengths
+
+1. Run the SeqLen.pl script:
+```bash
+perl SeqLen.pl <genome.fasta>
+```
 # Characterization of 5s rRNA gene targets (Brianna)
 
 ## A. Retrieving 5S rRNA genes plus flanks from each genome
