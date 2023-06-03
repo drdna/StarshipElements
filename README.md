@@ -84,11 +84,11 @@ This produces two output files. One with the the transcript sequences and the ot
 
 1. [Multifasta files](/data/StarshipFastas/) for each starship element were uploaded into the [SignalP6 server](https://services.healthtech.dtu.dk/service.php?SignalP) for identification of candidate secreted proteins.
 
-## Determine copy number of starship genes in each host genome
+## Determine copy number of starship genes in each host genome (Raina)
 1. Download gene predictions fasta files (XXXX_genes.fasta) from the [Deripped gene predictions](https://drive.google.com/drive/u/0/folders/10hqhFidG4XRdHH0CA26XTvq_yIwpeguB) folder on GoogleDrive. For this example, I am using the DR_B71v2sh_Chr3_1528859-1878215_genes.fasta file:
 2. Change into directory containing the downloaded fasta file:
 ```bash
-cd StarshipGenes/
+cd Starships/
 ```
 3. Blast genes against corresponding genome (note this script uses awk to give each gene a simple gene name):
 ```bash
