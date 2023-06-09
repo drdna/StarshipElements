@@ -31,17 +31,17 @@ for genome in `ls GenomeDir/*fasta`; do g=${genome/\.fasta/}; perl 5SrRNA_genes_
 1. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify matches that span the entire 5S rRNA gene locus:
 ```bash
 cd GenomeDir
-blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk '$4 > 400' > target1_5S.target2.BLAST
+blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk '$4 > 400' > target1_intact5S.target2.BLAST
 ```
-2. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify 5S rRNA genes with Starship insertions:
+2. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify 5S rRNA genes with Starship insertions (intact and remnants):
 ```bash
-blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280'
+blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280' > target1_5SplusSS.target2.BLAST
 ```
 ## C. Search for new 5S in other genomes:
 
 1. Mask 5S loci that have already been characterized:
 ```bash
-perl CrossMask.pl target1_5S.target2.BLAST target2.fasta > target2_5S_masked.fasta
+perl CrossMask.pl target1_intact5S.target2.BLAST target2.fasta > target2_5S_masked.fasta
 ```
 2. Search for new 5S rRNA genes in masked genomes (here we are repeating step A above but with the masked genome we just created):
 ```bash
