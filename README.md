@@ -1,5 +1,7 @@
 # A repository of methods and codes for analyzing Starship Transposons in *Pyricularia oryzae*
 
+# Access [MINION genomes](https://luky.sharepoint.com/sites/FarmanLab/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FFarmanLab%2FShared%20Documents%2F4%5FMINION%5FGENOMES&viewid=7b40d068%2Df852%2D4769%2Daec3%2Db519f6fd20fb)
+
 # Determine genome lengths
 
 1. Run the SeqLen.pl script:
