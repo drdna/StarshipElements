@@ -12,7 +12,7 @@ perl SeqLen.pl <genome.fasta>
 
 ## A. Retrieving 5S rRNA genes plus flanks from each genome
 
-1. Blast [5S rRNA gene sequence](/data/5SrRNA.fasta) against target genome:
+1. Blast [5S rRNA gene sequence](/data/5SrRNA.fasta) against target genome to determine their chromosomal locations:
 ```bash
 cd GenomeDir
 blastn -query 5SrRNA.fasta -subject target1.fasta -outfmt 6 > 5SrRNA.target1.BLAST
@@ -30,7 +30,7 @@ for genome in `ls GenomeDir/*fasta`; do g=${genome/\.fasta/}; perl 5SrRNA_genes_
 
 ## B. Cross-genome comparison of 5S rRNA gene targets (Brianna)
 
-1. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify matches that span the entire 5S rRNA gene locus:
+1. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify matches that span the entire 5S rRNA gene locus + the flanks. Use awk to filter the matches to find only intact 5S loci. Save matches to file so as to allow masking of the identified loci in other genomes:
 ```bash
 cd GenomeDir
 blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk '$4 > 400' > target1_intact5S.target2.BLAST
@@ -39,9 +39,9 @@ blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk
 ```bash
 blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280' > target1_5SplusSS.target2.BLAST
 ```
-## C. Search for new 5S in other genomes:
+## C. Search for new 5S in next genome (target2):
 
-1. Mask 5S loci that have already been characterized:
+1. Use the previous blast match information to mask 5S loci that have already been characterized:
 ```bash
 perl CrossMask.pl target1_intact5S.target2.BLAST target2.fasta > target2_5S_masked.fasta
 ```
@@ -49,6 +49,7 @@ perl CrossMask.pl target1_intact5S.target2.BLAST target2.fasta > target2_5S_mask
 ```bash
 blastn -query 5SrRNA.fasta -subject target2_5S_masked.fasta -outfmt 6 > 5SrRNA.target2_5S_masked.BLAST
 ```
+3. Repeat from step A.2. (above)
 
 # Starship Gene Predictions
 
