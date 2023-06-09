@@ -41,7 +41,7 @@ blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk
 
 1. Mask 5S loci that have already been characterized:
 ```bash
-perl CrossMask target1_5S.target2.BLAST target2.fasta > target2_5S_masked.fasta
+perl CrossMask.pl target1_5S.target2.BLAST target2.fasta > target2_5S_masked.fasta
 ```
 2. Search for new 5S rRNA genes in masked genomes (here we are repeating step A above but with the masked genome we just created):
 ```bash
