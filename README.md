@@ -110,7 +110,7 @@ for f in `ls MINION_GENOMES/*fasta`; do blastn -query 5SrRNA.fasta -subject $f -
 for f in `ls MINION_GENOMES/*fasta`; do perl 5SrRNA_flanks.pl 5SrRNA.${f/_*/}.BLAST $f >> Truncated_5SrRNA_flanks.fasta; done
 ```
 ## Starship Phylogenetics
-1. Use [Intact_5kb_flanks.pl](/scripts/Intact_5kb_flanks.pl) script to retrieve 5 kb of each flanking sequence from intact 5S rRNA genes:
+1. Use [Intact_5SrRNA_flanks.pl](/scripts/Intact_5SrRNA_flanks.pl) script to retrieve 5 kb of each flanking sequence from intact 5S rRNA genes:
 ```bash
-perl Intact_5k_flanks.pl 5SrRNA.CD156.BLAST > CD156_5S_flanks.fasta
+perl Intact_5SrRNA_flanks.pl 5SrRNA.CD156.BLAST > CD156_5S_flanks.fasta
 ```
