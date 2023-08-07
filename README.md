@@ -10,7 +10,7 @@ pod5 convert fast5 <directory-of-fast5s> --output output_pod5s/ --one-to-one <di
 dorado download --model <model-name>
 dorado basecaller --emit-fastq <directory-of-pod5s> | gzip > output.fq.gz # try and implement pigz parallel compression
 ```
-3. Use [canu.sh](/scripts.canu.sh) SLURM script for Canu assembly:
+3. Use [canu.sh](/scripts/canu.sh) SLURM script for Canu assembly:
 ```bash
 assembly=<assembly-prefix>
 nano_reads=<fastq directory>
