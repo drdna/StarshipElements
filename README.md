@@ -16,7 +16,10 @@ assembly=<assembly-prefix>
 nano_reads=<fastq directory>
 canu -d ${assembly}_canu_run -p $assembly genomeSize=45m useGrid=false gridOptionsOVS=" --time 96:00:00 --partition=CAC48M192_L --ntasks=1 --cpus-per-task=4 " minReadLength=1000 -nanopore-raw $nano_reads
 ```
-
+4. Rescuing raw files from failed MinION runs:
+```bash
+./recover_reads <Representative-fast5-file> </Library/MinKNOW/data/queued_reads/complete-reads-directory> --output-directory Recovered_fast5
+```
 
 # Access [MINION genomes](https://luky.sharepoint.com/:f:/r/sites/FarmanLab/Shared%20Documents/4_MINION_GENOMES?csf=1&web=1&e=tGH6ee)
 
