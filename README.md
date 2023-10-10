@@ -105,8 +105,12 @@ This produced the DeRIP'd sequence: [B71StarshipMaskedDeRIPd.fasta](/data/B71Sta
 perl path/to/Fgenesh_to_mRNA_protein.pl path/to/B71Starship.fgenesh.out
 ```
 This produces two output files. One with the the transcript sequences and the other with proteins.
+2. Conversion of fegenesh outputs to gff format using [Fgenesh2gff.pl](/scripts/Fgenesh2gff.pl) script:
+```bash
+perl Fgenesh2gff.pl <fegenesh_outfile>
+```
+3. The protein sequences were use to search NCBI using blastp
 
-2. The protein sequences were use to search NCBI using blastp
 
 ## Identification of secreted proteins among starship cargo:
 
