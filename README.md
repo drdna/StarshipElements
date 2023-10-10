@@ -5,10 +5,14 @@
 ```bash
 pod5 convert fast5 <directory-of-fast5s> --output output_pod5s/ --one-to-one <directory-of-fast5s>
 ```
-2. Dorado basecalling:
+2A. Dorado basecalling on laptop:
 ```bash
 dorado download --model <model-name>
 dorado basecaller --emit-fastq <directory-of-pod5s> | gzip > output.fq.gz # try and implement pigz parallel compression
+```
+2B. Dorado basecalling on LCC cluster using [dorado.sh](/scripts/dorado.sh) script:
+```bash
+sbatch $scripts/dorado.sh pod5_directory
 ```
 3. Use [canu.sh](/scripts/canu.sh) SLURM script for Canu assembly:
 ```bash
