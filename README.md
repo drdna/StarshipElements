@@ -54,7 +54,7 @@ for genome in `ls GenomeDir/*fasta`; do g=${genome/\.fasta/}; perl 5SrRNA_genes_
 ``` 
 ## A2. Retrieving Starship flanks (minus truncated 5S rRNA genes) from each genome:
 
-1. Start with a list of starship coordinates ([Starship_coordinates.txt](/data/Starship_coordinates.txt)), then run [Starship_flanks.pl](/scripts/Starship_flanks.pl) script which reads each genome assembly, retrieves 500 bp of left and right flank from each starship contained therein, clips off matches to 5S rRNA genes, and then add 5SrRNA gene sequences to resulting outfile ([Starship_flanks.fasta](/data/Starship_flanks.fasta):
+1. Start with a list of starship coordinates ([Starship_coordinates.txt](/data/Starship_coordinates.txt)), then run [Starship_flanks.pl](/scripts/Starship_flanks.pl) script which reads each genome assembly, retrieves 500 bp of left and right flank from each starship contained therein, clips off matches to 5S rRNA genes, and then add 5SrRNA gene sequences to resulting outfile ([Starship_flanks.fasta](/data/Starship_flanks.fasta)):
 ```bash
 perl Starship_flanks.pl Starship_coordinates.txt
 ```
