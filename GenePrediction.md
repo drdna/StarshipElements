@@ -1,80 +1,3 @@
-# A repository of methods and codes for analyzing Starship Transposons in *Pyricularia oryzae*
-
-# MinION basecalling and assembly
-1. Convert fast5 files to pod5 format:
-```bash
-pod5 convert fast5 <directory-of-fast5s> --output output_pod5s/ --one-to-one <directory-of-fast5s>
-```
-2A. Dorado basecalling on laptop:
-```bash
-dorado download --model <model-name>
-dorado basecaller --emit-fastq <directory-of-pod5s> | gzip > output.fq.gz # try and implement pigz parallel compression
-```
-2B. Dorado basecalling on LCC cluster using [dorado.sh](/scripts/dorado.sh) script:
-```bash
-sbatch $scripts/dorado.sh pod5_directory
-```
-3. Use [canu.sh](/scripts/canu.sh) SLURM script for Canu assembly:
-```bash
-assembly=<assembly-prefix>
-nano_reads=<fastq directory>
-canu -d ${assembly}_canu_run -p $assembly genomeSize=45m useGrid=false gridOptionsOVS=" --time 96:00:00 --partition=CAC48M192_L --ntasks=1 --cpus-per-task=4 " minReadLength=1000 -nanopore-raw $nano_reads
-```
-4. Rescuing raw files from failed MinION runs:
-```bash
-./recover_reads <Representative-fast5-file> </Library/MinKNOW/data/queued_reads/complete-reads-directory> --output-directory Recovered_fast5
-```
-
-# Access [MINION genomes](https://luky.sharepoint.com/:f:/r/sites/FarmanLab/Shared%20Documents/4_MINION_GENOMES?csf=1&web=1&e=tGH6ee)
-
-# Determine genome lengths
-
-1. Run the SeqLen.pl script:
-```bash
-perl SeqLen.pl <genome.fasta>
-```
-# Characterization of 5s rRNA gene targets (Brianna)
-
-## A. Retrieving 5S rRNA genes plus flanks from each genome
-
-1. Blast [5S rRNA gene sequence](/data/5SrRNA.fasta) against target genome to determine their chromosomal locations:
-```bash
-cd GenomeDir
-blastn -query 5SrRNA.fasta -subject target1.fasta -outfmt 6 > 5SrRNA.target1.BLAST
-```
-2. Use [5SrRNA_genes_flanks.pl](/scripts/5SrRNA_genes_flanks.pl) script to retrieve intact 5S rRNA gene sequences & 5S rRNA gene sequences + flanks (200 bp):
-```bash
-perl 5SrRNA_genes_flanks.pl 5SrRNA.target1.BLAST target1.fasta
-```
-This will create two files, one named target1_5S_genes.fasta and the other, target1_5S_genes_plus.fasta
-
-Note: To automate 5S gene retrieval, use 'for' loop to iterate through genome files:
-```bash
-for genome in `ls GenomeDir/*fasta`; do g=${genome/\.fasta/}; perl 5SrRNA_genes_flanks.pl 5SrRNA.${g}.BLAST $genome; done
-```
-## B. Cross-genome comparison of 5S rRNA gene targets (Brianna)
-
-1. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify matches that span the entire 5S rRNA gene locus + the flanks. Use awk to filter the matches to find only intact 5S loci. Save matches to file so as to allow masking of the identified loci in other genomes:
-```bash
-cd GenomeDir
-blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk '$4 > 400' > target1_intact5S.target2.BLAST
-```
-2. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify 5S rRNA genes with Starship insertions (intact and remnants):
-```bash
-blastn -query target1_5S_genes_plus.fasta -subject target2.fasta -outfmt 6 | awk '$4 > 220 && $4 < 280' > target1_5SplusSS.target2.BLAST
-```
-## C. Search for new 5S in next genome (target2):
-
-1. Use the previous blast match information to mask 5S loci that have already been characterized:
-```bash
-perl CrossMask.pl target1_intact5S.target2.BLAST target2.fasta > target2_5S_masked.fasta
-```
-2. Search for new 5S rRNA genes in masked genomes (here we are repeating step A above but with the masked genome we just created):
-```bash
-blastn -query 5SrRNA.fasta -subject target2_5S_masked.fasta -outfmt 6 > 5SrRNA.target2_5S_masked.BLAST
-```
-3. Repeat from step A.2. (above)
-
 # Starship Gene Predictions
 
 ## DeRIP'ing a presumed full-length element that is present in several genomes
@@ -110,7 +33,6 @@ perl fgenesh2gff.pl <fegenesh_outfile>
 ```
 3. The protein sequences were use to search NCBI using blastp
 
-
 ## Identification of secreted proteins among starship cargo:
 
 1. [Multifasta files](/data/StarshipFastas/) for each starship element were uploaded into the [SignalP6 server](https://services.healthtech.dtu.dk/service.php?SignalP) for identification of candidate secreted proteins.
@@ -126,7 +48,6 @@ cd Starships/
 i=0; awk '{if($0 ~ /^>/) {i++; print ">gene" i} else {print $0}}' DR_B71v2sh_Chr3_1528859-1878215_genes.fasta | blastn -query - -subject ~/path/to/B71v2sh.fasta -outfmt '6 qseqid sseqid qlen pident length mismatch gapopen qstart qend sstart send evalue score' | sort -k1.5,1n -k2.4,2 -k10,10n > B71v2sh_Chr3_1528859-1878215.B71v2sh.BLAST
 ```
 note: make sure you; i) change "~/path/to/" to the actual path containing the genome file; change the input and output file names as appropriate.
-
 
 ## Extracting genomic sequences flanking Starship insertions to examine 5S rRNA gene targets in other genomes
 1. BLAST 5S rRNA genes against all genome assemblies
