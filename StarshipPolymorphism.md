@@ -1,4 +1,4 @@
-# Characterization of Starhip Polymorphism
+# Characterization of Starship Polymorphism
 Starship elements display remarkable strain-to-strain variation in their occupancy of specific chromosomes. The goal of the methods reported below is analyze the structure of specific 5S rRNA gene loci that are known to contain starship insertions in at least one genome. The specific steps involved include retrieval of sequences flanking the target 5S rRNA gene, alignment of those sequences against all other genomes and then visualization of the alignments in the IGV browser.
 
 ## A. Retrieving Starship flanks (minus truncated 5S rRNA genes) from each genome:
