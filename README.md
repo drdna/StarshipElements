@@ -35,7 +35,7 @@ perl SeqLen.pl <genome.fasta>
 ```
 # Characterization of 5s rRNA gene targets (Brianna)
 
-## A1. Retrieving 5S rRNA genes plus flanks from each genome
+## A. Retrieving 5S rRNA genes plus flanks from each genome
 
 1. Blast [5S rRNA gene sequence](/data/5SrRNA.fasta) against target genome to determine their chromosomal locations:
 ```bash
@@ -51,22 +51,7 @@ This will create two files, one named target1_5S_genes.fasta and the other, targ
 Note: To automate 5S gene retrieval, use 'for' loop to iterate through genome files:
 ```bash
 for genome in `ls GenomeDir/*fasta`; do g=${genome/\.fasta/}; perl 5SrRNA_genes_flanks.pl 5SrRNA.${g}.BLAST $genome; done
-``` 
-## A2. Retrieving Starship flanks (minus truncated 5S rRNA genes) from each genome:
-
-1. Start with a list of starship coordinates ([Starship_coordinates.txt](/data/Starship_coordinates.txt)), then run [Starship_flanks.pl](/scripts/Starship_flanks.pl) script which reads each genome assembly, retrieves 500 bp of left and right flank from each starship contained therein, clips off matches to 5S rRNA genes, and then add 5SrRNA gene sequences to resulting outfile ([Starship_flanks.fasta](/data/Starship_flanks.fasta)):
-```bash
-perl Starship_flanks.pl Starship_coordinates.txt
 ```
-2. Run FACET to align starship flank sequences to each genome (in no clean/GFF format):
-```bash
-for f in `ls MINION_GENOMES/*nh.fasta`; do FACET db_free $f Starship_flanks.fasta -nc -g; done
-```
-3. Modify GFF file to color full-length 5S rRNA gene alignments in red (for easier interpretation of locus structure):
-```bash
-for f in `ls FACET_output/*/*Starship_flanks*gff`; do awk -F '\t' '{if($3 ~ /5S/ && $5 - $4 > 100) {$9="color=#FF0000"substr($9, 14, 1000); print $0} else {print $0}; OFS="\t"}' $f > ${f/flanks/flanks_recolored}; rm $f; done
-```
-
 ## B. Cross-genome comparison of 5S rRNA gene targets (Brianna)
 
 1. Blast 5s rRNA genes+flanks sequence from one genome against another genome sequence and identify matches that span the entire 5S rRNA gene locus + the flanks. Use awk to filter the matches to find only intact 5S loci. Save matches to file so as to allow masking of the identified loci in other genomes:
