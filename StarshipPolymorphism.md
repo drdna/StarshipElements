@@ -14,5 +14,5 @@ for f in `ls MINION_GENOMES/*nh.fasta`; do FACET db_free $f Starship_flanks.fast
 ```
 3. Modify GFF file to color full-length 5S rRNA gene alignments in red (for easier interpretation of locus structure):
 ```bash
-for f in `ls FACET_output/*/*Starship_flanks*gff`; do awk -F '\t' '{if($3 ~ /5S/ && $5 - $4 > 100) {$9="color=#FF0000"substr($9, 14, 1000); print $0} else {print $0}; OFS="\t"}' $f > ${f/flanks/flanks_recolored}; rm $f; done
+for f in `ls FACET_output/*/*Starship_flanks*gff`; do awk -F '\t' '{if($3 ~ /5S/ && $5 - $4 > 100) {$9="color=#FF0000"substr($9, 14, 1000); print $0} else {print $0}; OFS="\t"}' $f | grep -v color=#999999 > ${f/flanks/flanks_recolored}; rm $f; done
 ```
