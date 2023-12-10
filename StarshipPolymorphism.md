@@ -23,6 +23,7 @@ By filtering out partially aligned flank sequences and using queries that contai
 
 Figure 1. Whole chromosome view of chromosome 1 in strain Arcadia2 showing intact 5S rRNA copies (red), truncated 5S rRNA genes (orange and yellow) and alignments to intact starship flanks (blue).
 
+
 ![Intact5SrRNA.png](/data/Intact5SrRNA.png)
 
 Figure 2. Zoomed in view showing that sequences flanking starship insertions on Chromosome 1 in strains CD156 and FR13 flanking an intact 5S rRNA gene copy in strains Arcadia2.
