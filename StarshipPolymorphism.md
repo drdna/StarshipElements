@@ -17,7 +17,7 @@ for f in `ls MINION_GENOMES/*nh.fasta`; do FACET db_free $f Starship_flanks.fast
 for f in `ls FACET_output/*/*Starship_flanks*gff`; do ./StarshipRe-color.sh $f; rm $f; done
 ```
 ## Visualizing output files in the IGV browser:
-By filtering out partially aligned flank sequences and using queries that contain just starship flank sequences without the adjacent, interrupted 5S rRNA gene targets, this greatly simplifies the interpretation of alignments:
+By filtering out partially aligned flank sequences and using queries that contain just starship flanks without the adjacent, interrupted 5S rRNA gene targets, this greatly simplifies the interpretation of alignments:
 
 ![WholeChromosomeView.png](/data/WholeChromosomeView.png)
 
