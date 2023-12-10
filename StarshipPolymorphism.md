@@ -12,7 +12,15 @@ perl Starship_flanks.pl Starship_coordinates.txt
 ```bash
 for f in `ls MINION_GENOMES/*nh.fasta`; do FACET db_free $f Starship_flanks.fasta -nc -g; done
 ```
-3. Use [StarshipRe-color.sh](/scripts/StarshipRe-color.sh) script to modify GFF file to color full-length 5S rRNA gene alignments in red (for easier interpretation of locus structure):
+3. Use [StarshipRe-color.sh](/scripts/StarshipRe-color.sh) script to modify GFF file to color full-length 5S rRNA gene alignments in red (for easier interpretation of locus structure). The script also filters out partial alignments of flanking sequences which greatly de-clutters the IGV workspace.
 ```bash
 for f in `ls FACET_output/*/*Starship_flanks*gff`; do ./StarshipRe-color.sh $f; rm $f; done
 ```
+## Visualizing output files in the IGV browser:
+By filtering out partially aligned flank sequences and using queries that contain just starship flank sequences without the adjacent, interrupted 5S rRNA gene targets, this greatly simplifies the interpretation of alignments:
+
+![/data/WholeChromosomeView.png]
+Figure 1. Whole chromosome view of chromosome 1 in strain Arcadia2 showing intact 5S rRNA copies (red), truncated 5S rRNA genes (orange and yellow) and alignments to intact starship flanks (blue).
+
+![/data/Intact5SrRNA.png]
+Figure 2. Zoomed in view showing that sequences flanking starship insertions on Chromosome 1 in strains CD156 and FR13 flanking an intact 5S rRNA gene copy in strains Arcadia2.
