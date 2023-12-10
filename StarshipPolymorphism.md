@@ -26,4 +26,4 @@ Figure 1. Whole chromosome view of chromosome 1 in strain Arcadia2 showing intac
 
 ![Intact5SrRNA.png](/data/Intact5SrRNA.png)
 
-Figure 2. Zoomed in view showing that sequences flanking starship insertions on Chromosome 1 in strains CD156 and FR13 flanking an intact 5S rRNA gene copy in strains Arcadia2.
+Figure 2. Zoomed in view showing that sequences flanking a starship insertion present on Chromosome 1 in strains CD156 and FR13 flank an intact 5S rRNA gene copy in strains Arcadia2.
