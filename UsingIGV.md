@@ -25,18 +25,18 @@
     
 ![FindFeatures2](/screenshots/FindFeatures2.png)
 
-9. Zoom in on each feature to explore chromosome content and structure surrounding starhsip flanking sequences (these are sequences known to flank starship insertions in other genomes but which may, or may not, flank a starship insertion in the genome currently being queried). Zoom by clicking in the navigation toolbar and dragging to elect the end of the desired zoom area:
+9. Zoom in on each feature to explore chromosome content and structure surrounding starhsip flanking sequences (these are sequences known to flank starship insertions in other genomes but which may, or may not, flank a starship copy in the genome currently being queried). Zoom by clicking in the navigation toolbar and dragging to select the end of the desired zoom area:
     
 ![DragNZoom](/screenshots/DragNZoom.png)
 
-10. This will gradually zoom in on the selected feature but the names of all features will not be visible until a sufficient zoom level is reached. Note in the figure below that Zoom #1 shows alignemnts for two flanking sequences (blue boxes) but only one label is visible:
+10. This will gradually zoom in on the selected feature but the names of all features will not be visible until a sufficient zoom level is reached. Note in the figure below that Zoom #1 shows alignments for two flanking sequences (blue boxes) but only one label is visible:
     
 ![Zoom1](/screenshots/Zoom1.png) 
 
 11. Repeat click and drag operations until the names of all features are clearly visible:
     
-12. ![FullZoom](/screenshots/FullZoom.png)
+![FullZoom](/screenshots/FullZoom.png)
     
-13. Once the structure of the (empty) starship locus has been recorded, you can Zoom out to the whole chromosome view by clicking on the Zoom bar next to the '-' symbol:
+12. Once the structure of the (empty) starship locus has been recorded, you can Zoom out to the whole chromosome view by clicking on the Zoom level to the right of the '-' symbol:
  
 ![ZoomOut](/screenshots/ZoomOut.png)
