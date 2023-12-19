@@ -21,7 +21,7 @@
     
 ![SelectExpand](/screenshots/SelectExpand.png)
 
-8. Now you should be able to see all of the relevant features on the chromosome. Here, we are only interested in exploring features surrounding starship flanks and these are labeled with key starship identifiers (GenomeID_chromosome_start_end). These are shown with arrows in the figure below:
+8. Now you should be able to see all of the relevant features on the chromosome. Here, we are only interested in exploring features surrounding starship flanks and these are labeled with key starship identifiers (GenomeID_chromosome_start_end_flank). These are shown with arrows in the figure below:
     
 ![FindFeatures2](/screenshots/FindFeatures2.png)
 
