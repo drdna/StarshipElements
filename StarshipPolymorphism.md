@@ -31,7 +31,7 @@ Figure 2. Zoomed in view showing that sequences flanking a starship insertion pr
 ## Improving efficiency with IGV navigation:
 1. Create a .bed file listing coordinates of relevant features present in the gff file:
 ```bash
-awk '{print $1, ($4)-1000, ($5)+1000}' FACET_output/Arcadia2-c1/Arcadia2-c1_Starship_flanks_recolored_noclean.gff > Arcadia_flanks.bed
+awk '$5 - $4 > 200 {print $1, ($4)-1000, ($5)+1000; OFS="\t"}' FACET_output/Arcadia2-c1/Arcadia2-c1_Starship_flanks_recolored_noclean.gff > Arcadia_flanks.bed
 ```
 2. Use the [igv-reports](https://github.com/igvteam/igv-reports) tool to generate easily navigable html renditions of IGV windows:
 ```bash
