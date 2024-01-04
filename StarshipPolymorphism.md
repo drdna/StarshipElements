@@ -38,4 +38,4 @@ awk '$5 - $4 > 200 {print $1, ($4)-1000, ($5)+1000; OFS="\t"}' FACET_output/Arca
 igv_reports/report.py Arcadia2_flanks.bed --fasta Arcadia2-c1.fasta  --flanking 1000 --tracks FACET_output/Arcadia2-c1/Arcadia2-c1_Starship_flanks_recolored_noclean.gff --output Arcadia_reports2.html
 ```
 
-![Arcadia_reports3.html](/data/Arcadia_reports3.html)
+
