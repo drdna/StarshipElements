@@ -28,7 +28,7 @@ Figure 1. Whole chromosome view of chromosome 1 in strain Arcadia2 showing intac
 
 Figure 2. Zoomed in view showing that sequences flanking a starship insertion present on Chromosome 1 in strains CD156 and FR13 flank an intact 5S rRNA gene copy in strain Arcadia2.
 
-## Improving efficiency with IGV navigation:
+## Use IGV-REPORTS to improve efficiency with IGV navigation:
 1. Create a .bed file listing coordinates of relevant features present in the gff file:
 ```bash
 awk '$5 - $4 > 200 {print $1, ($4)-1000, ($5)+1000; OFS="\t"}' FACET_output/Arcadia2-c1/Arcadia2-c1_Starship_flanks_recolored_noclean.gff > Arcadia_flanks.bed
