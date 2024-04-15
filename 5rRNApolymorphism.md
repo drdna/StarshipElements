@@ -45,4 +45,30 @@ blastn -query 5SrRNA.fasta -subject target2_5S_masked.fasta -outfmt 6 > 5SrRNA.t
 ```bash
 blastn -query All_5S_rRNA_genes_plus.fasta -subject All_5S_rRNA_genes_plus.fasta -outfmt 6 2>/dev/null| awk '$4 > 450 && $4 < 500' | NonRedundant5Sgenes.pl - | uniq > NonRedundant5SrRNAgenes.txt
 ```
+2. Extract non redundant sequence set:
+```bash
+grep -f NonRedundant5SrRNAgenes.txt All_5S_rRNA_genes_plus.fasta -A | grep -v ^- > NonRedundant5SrRNAgenes.fasta
+```
+## D. Identify loci with starships in them (intact and truncated)
+1. Identify blast alignments consistent with starship-interrupted 5S rRNA gene loci:
+```bash
+for f in `ls *fasta`; do blastn -query NonRedundant5SrRNAgenes.fasta -subject $f -outfmt 6 | awk '$7 < 20 && $8 > 250 && $8 < 280 {print $1}' >> LF_5SrRNA_genes.txt; done
+```
+```bash
+for f in `ls *fasta`; do blastn -query NonRedundant5SrRNAgenes.fasta -subject $f -outfmt 6 | awk '$8 > 450 && $7 > 240 && $7 < 270 {print $1}' >> RF_5SrRNA_genes.txt; done
+```
+2. Identify loci with intact starships:
+```bash
+for f in `cat LF_5SrRNA_genes.txt`; do grep $f RF_5SrRNA_genes.txt ; done | sort | uniq > 5SrRNA_loci_intact_SS.txt
+```
+3. Identify loci with truncated starships:
+```bash
+grep -vf 5SrRNA_loci_intact_SS.txt LF_5SrRNA_genes.txt | sort | uniq
+```
+```bash
+grep -vf 5SrRNA_loci_intact_SS.txt RF_5SrRNA_genes.txt | sort | uniq
+```
+
+
+
 
