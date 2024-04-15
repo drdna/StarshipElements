@@ -39,3 +39,10 @@ perl CrossMask.pl target1_intact5S.target2.BLAST target2.fasta > target2_5S_mask
 blastn -query 5SrRNA.fasta -subject target2_5S_masked.fasta -outfmt 6 > 5SrRNA.target2_5S_masked.BLAST
 ```
 3. Repeat from step A.2. (above)
+
+## C. Identify non-redundant set of intact 5S rRNA genes
+1. BLAST all 5S rRNA genes against one another and filter using [NonRedundant5Sgenes.pl](/scripts/NonRedundant5Sgenes.pl) script to find full length copies:
+```bash
+blastn -query All_5S_rRNA_genes_plus.fasta -subject All_5S_rRNA_genes_plus.fasta -outfmt 6 2>/dev/null| awk '$4 > 450 && $4 < 500' | NonRedundant5Sgenes.pl - > NonRedundant5SrRNAgenes.txt
+```
+
