@@ -72,7 +72,8 @@ c) Check if there is sufficient dissimilarity between starships insertions on ch
 ```bash
 FACET db-free Arcadia2_Final.fasta Arcadia2_Chr4_5027104.fasta -nc -g
 ```
-The resulting alignment shows significant variation in sequence content in the elements on chromosomes 4 and 7. 
+The resulting alignment shows significant variation in sequence content in the elements on chromosomes 4 and 7:
+
 ![Chr4Starship.png](/data/Chr4Starship.png)
 
 Therefore, if there was a misassembly, alignment of the reads should have resulted in large numbers of soft-clipped reads at dissimilarity boundaries. This was NOT observed.
