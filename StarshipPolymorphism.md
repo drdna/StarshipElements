@@ -62,6 +62,22 @@ Gsize=$3
 
 singularity run --app longstitch105 /share/singularity/images/ccs/conda/amd-conda14-rocky8.sinf longstitch tigmint-ntLink-arks draft=$assembly reads=$reads G=$Gsize t=16
 ```
+2. Manual interrogation of long reads mapped with minimap2:
+a) Align reads to Arcadia2 genome:
+```bash
+minimap2 Arcadia2_Final.fasta Arcadia2_Final_Arcadia2_MinION.fastq -o Arcadia2_Final_Arcadia2_MinION_Sorted.bam
+```
+b) Visualize reads in IGV and check for absence of clusters of soft-clipped reads across starship sequences. Load tracks for Arcadia2 X US71 genome alignments, Arcadia2 x All Starships alignment, and Arcadia2 x All repeats alignments
+c) Check if there is sufficient dissimilarity between starships insertions on chromosomes 4 and 7 by generating an alignment using FACET and visualizing in IGV:
+```bash
+FACET db-free Arcadia2_Final.fasta Arcadia2_Chr4_5027104.fasta -nc -g
+```
+The resulting alignment shows significant variation in sequence content in the elements on chromosomes 4 and 7. 
+![Chr4Starship.png](/data/Chr4Starship.png)
+
+Therefore, if there was a misassembly, alignment of the reads should have resulted in large numbers of soft-clipped reads at dissimilarity boundaries. This was NOT observed.
+
+
 
 
 
