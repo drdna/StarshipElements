@@ -65,7 +65,8 @@ singularity run --app longstitch105 /share/singularity/images/ccs/conda/amd-cond
 2. Manual interrogation of long reads mapped with minimap2:
 a) Align reads to Arcadia2 genome:
 ```bash
-minimap2 Arcadia2_Final.fasta Arcadia2_Final_Arcadia2_MinION.fastq -o Arcadia2_Final_Arcadia2_MinION_Sorted.bam
+minimap2 -ax map-ont Arcadia2_Final.fasta Arcadia2_Final_Arcadia2_MinION.fastq out.bam
+samtools sort out.bam -o Arcadia2_Final_Arcadia2_MinION_Sorted.bam
 ```
 b) Visualize reads in IGV and check for absence of clusters of soft-clipped reads across starship sequences. Load tracks for Arcadia2 X US71 genome alignments, Arcadia2 x All Starships alignment, and Arcadia2 x All repeats alignments
 c) Check if there is sufficient dissimilarity between starships insertions on chromosomes 4 and 7 by generating an alignment using FACET and visualizing in IGV:
