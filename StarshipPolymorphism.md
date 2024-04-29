@@ -37,5 +37,43 @@ awk '$5 - $4 > 200 {print $1, ($4)-1000, ($5)+1000; OFS="\t"}' FACET_output/Arca
 ```bash
 igv_reports/report.py Arcadia2_flanks.bed --fasta Arcadia2-c1.fasta  --flanking 1000 --tracks FACET_output/Arcadia2-c1/Arcadia2-c1_Starship_flanks_recolored_noclean.gff --output Arcadia_reports2.html
 ```
+## Verification of a starship-associated, interchromosomal translocation
+1. Assess Arcadia2 chromosomal accuracy using longstitch:
+```bash
+#!/bin/bash
+
+#SBATCH --time 48:00:00
+#SBATCH --job-name=longstitch
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --partition=normal
+#SBATCH --mem=500GB
+#SBATCH --mail-type ALL
+#SBATCH -A coa_farman_uksr
+#SBATCH --mail-type ALL
+#SBATCH --mail-user farman@uky.edu
+
+echo "SLURM_NODELIST: "$SLURM_NODELIST
+
+assembly=$1
+reads=$2
+Gsize=$3
+
+singularity run --app longstitch105 /share/singularity/images/ccs/conda/amd-conda14-rocky8.sinf longstitch tigmint-ntLink-arks draft=$assembly reads=$reads G=$Gsize t=16
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
