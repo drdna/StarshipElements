@@ -72,7 +72,7 @@ c) Check if there is sufficient dissimilarity between starships insertions on ch
 ```bash
 FACET db-free Arcadia2_Final.fasta Arcadia2_Chr4_5027104.fasta -nc -g
 ```
-The resulting alignment shows significant variation in sequence content in the elements on chromosomes 4 and 7:
+The resulting alignment shows significant variation in sequence content between the elements on chromosomes 4 and 7 (note regions with no alignments within red box):
 
 ![Chr4Starship.png](/data/Chr4Starship.png)
 
