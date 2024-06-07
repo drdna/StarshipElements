@@ -7,7 +7,7 @@ This will return a list list this:
 
 ![BLASToutput.png](/data/BLASToutput.png)
 
-Note that tig0000402 does not have an extended match to the B71 reference genome even though it is > 160 kb in length. This make it a good candidate for a mini-chromosome segment.
+Note that tig0000402 does not have an extended match to the B71 reference genome even though it is >160 kb in length. This makes it a good candidate for a mini-chromosome segment.
 
 2. If we only want a list of candidate contigs, we can modify the above code:
 ```bash
