@@ -7,5 +7,7 @@ blastn -query Starship_genes.fasta -subject Host_genome.fasta -outfmt '6 qseqid 
 ```
 3. Summarize results in Starship_Gene_Copies data sheet. Document blast report and summarize the duplication: Chromosome, position, % alignment, % identity
 
+# Did chromosomal genes found on starship originate in another strain?
+
 # Evidence for the existence of Starship para-orthologs?
 ## Approach: perform parallel blastn and blastp searches
