@@ -1,4 +1,4 @@
-# Do Starship elements contain copies of chromosomal genes?
+# Do Starship elements contain copies of chromosomal genes? Are starship elements picking up chromosomal genes and moving them around?
 ## Approach: BLAST predicted starship genes against the host genome.
 1. Obtain nucleotide sequences of predicted starship genes (from Morgan)
 2. Perform BLAST search and filter results to retrieve matches that cover ≥90% of each starship gene copy
