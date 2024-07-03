@@ -6,3 +6,6 @@
 blastn -query Starship_genes.fasta -subject Host_genome.fasta -outfmt '6 qseqid sseqid qlen pident length mismatch gapopen qstart qend sstart send evalue score' | awk '$5/$3 > 0.9' | sort -k1,1 -k4,4nr -k5,5n > Starship_gene_hits.BLAST
 ```
 3. Summarize results in Starship_Gene_Copies data sheet.
+
+# Evidence for the existence of Starship para-orthologs?
+## Approach: perform parallel blastn and blastp searches
