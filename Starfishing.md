@@ -1,4 +1,4 @@
-# Identifying Pyricularia Starhsips using Starfish
+# Identifying Pyricularia Starship elements using Starfish
 
 ## 1. Rename contigs in gff file to be compatible with Starfish:
 ```bash
