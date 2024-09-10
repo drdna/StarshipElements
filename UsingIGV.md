@@ -1,5 +1,5 @@
 # Aligning sequences to visualize in IGV
-1. Create a conda environment to contain bioinfromatics tools
+1. Create a conda environment to contain bioinformatics tools
 ```bash
 conda create --name bioinfo
 ```
@@ -7,7 +7,7 @@ conda create --name bioinfo
 ```bash
 conda activate bioinfo
 ```
-3. Install minimap2. It is recommended that you use [Miniconda}(https://docs.anaconda.com/miniconda/) for this purpose.
+3. Install minimap2 in the environment. It is recommended that you use [Miniconda}(https://docs.anaconda.com/miniconda/) for this purpose.
 ```bash
 conda install bioconda::minimap2
 ```
