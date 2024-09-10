@@ -1,3 +1,20 @@
+# Aligning sequences to visualize in IGV
+1. Create a conda environment to contain bioinfromatics tools
+```bash
+conda create --name bioinfo
+```
+2. Activate the environment:
+```bash
+conda activate bioinfo
+```
+3. Install minimap2. It is recommended that you use [Miniconda}(https://docs.anaconda.com/miniconda/) for this purpose.
+```bash
+conda install bioconda::minimap2
+```
+4. Align sequence(s) of interest to the reference genome
+```bash
+minimap2 <path/to/reference_genome.fasta> <path/to/sequence_of_interest.fasta> -o soi.ref_genome.paf
+```
 # Visualizing Starship flank regions in IGV
 1. Open IGV:
    
@@ -12,7 +29,7 @@
 
 ![LoadGFF](/screenshots/LoadGFF.png)
 
-5. Select the GFF file that has the same prefix as the loaded genome file (here the loaded genome is B71v2sh_nh.fasta and the selected GFF file is B71v2sh_nh_Starship_flanks_noclean_recolored.gff).
+5. Select a .gff/.bed/.paf file that used the same reference genome (here the loaded genome is B71v2sh_nh.fasta and the selected GFF file is B71v2sh_nh_Starship_flanks_noclean_recolored.gff).
    
 ![SelectGFF](/screenshots/SelectGFF.png)
 
