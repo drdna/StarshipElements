@@ -30,3 +30,20 @@ minimap2 B71v2sh.fasta Arcadia2.fasta -o Arcadia2.B71v2sh.paf
 ![RightBorder.png](/data/RightBorder.png)
 
 9. Manually record the 10 nucleotides that define the starship border. Here, the flanking sequence is TCGTGTCAAT and the Starship border is ACTCCACAAC. Therefore, we cannot see an obvious inverted repeat at the starship border, nor can we see an obvious direct repeat immediately flanking the insertion site.
+
+# Characterize insertion targets of novel starship elements found by STARFISH
+1. Copy about 200 bp of sequence from each flank of the insertion site by zooming in on one flank so that one can see about 200 bp of flanking sequence (use the scale as a guide). Click on the Define Region tool:
+
+![DefineRegion.png](/data/DefineRegion.png)
+
+2. Click in the regions marked with plus symbols, making sure that the one side coincides precisely with the element border (zoom in further, if necessary).
+
+![SelectRegion.png](/data/SelectRegion.png)
+
+3. Option+click on the red bar that appears and select Copy Sequence
+
+![CopySequence.png](/data/CopySequence.png)
+
+4. Open the Terminal program (Mac) or Powershell (PC) and create a text document named :
+```bash
+nano
