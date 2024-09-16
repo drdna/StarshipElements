@@ -53,5 +53,5 @@ nano NovelStarshipFlanks.fasta
 
 ![NanoDoc.png](/data/NanoDoc.png)
 
-6. Close the document using ctrl-x, type "y" to accept the filename and hit return to save the document.
+6. Close the document using ctrl-x, type "y" to accept the filename and hit return to save the document. Next, create a "RF" sequence entry for 200 bp flanking the right border of the element. Continue adding new sequencxe entries to this file forflanking sequencxe surrounding each novel starship in the current genome under study.
 
