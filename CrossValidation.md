@@ -3,5 +3,5 @@
 
 ![insert.png](/data/insert.png)
 
-the element is between positions 5,349,244 and 5,449.526 on chromosome 1 of Arcadia2 and is in the reverse orientation. 
+the element is between positions 5,349,244 and 5,449,526 on chromosome 1 of Arcadia2 and is in the reverse orientation. 
 2. Edit the [spreadsheet](https://luky.sharepoint.com/:x:/r/sites/MANUSCRIPTs791/_layouts/15/Doc.aspx?sourcedoc=%7BB57224E1-CBC8-4399-9C2E-5D714591317C%7D&file=Starship_validation.xlsx&action=default&mobileredirect=true) to record how accurately STARFISH predicted each element.
