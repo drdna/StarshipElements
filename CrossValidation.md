@@ -13,7 +13,7 @@ b) PyStar.element.bed. This shows the positions of captains, terminal inverted r
 
 ![NewStarship.png](/data/NewStarship.png)
 
-3. To refine the insertion positions, we need to align the refenxce genome against the genome that was used to identify the starship insertion. In the above example, we can see that the insert was identified by aligning the Arcadia2 genome against B71.
+3. To refine the insertion positions, we need to align the reference genome against the genome that was used to identify the starship insertion. In the above example, we can see that the insert was identified by aligning the Arcadia2 genome against B71.
 4. Create an Arcadia2 x B71 alignment using minimap2:
 ```bash
 minimap2 B71v2sh.fasta Arcadia2.fasta -o Arcadia2.B71v2sh.paf
@@ -29,4 +29,4 @@ minimap2 B71v2sh.fasta Arcadia2.fasta -o Arcadia2.B71v2sh.paf
 
 ![RightBorder.png](/data/RightBorder.png)
 
-9. Manually record the 10 nucleotide that define the starship border. Here, the flanking sequence is TCGTGTCAAT and the Starship border is ACTCCACAAC. Therefore, we cannot see an obvious inverted repeat at the starship border, nor can we see an obvious direct repeat immediately flanking the insertion site.
+9. Manually record the 10 nucleotides that define the starship border. Here, the flanking sequence is TCGTGTCAAT and the Starship border is ACTCCACAAC. Therefore, we cannot see an obvious inverted repeat at the starship border, nor can we see an obvious direct repeat immediately flanking the insertion site.
