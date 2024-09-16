@@ -10,7 +10,7 @@ the element is between positions 5,349,244 and 5,449,526 on chromosome 1 of Arca
 # Characterizing new elements identified by Starfish
 1. Open IGV, load the appropriate reference genome and relevant annotation tracks using these basic [instructions](https://github.com/drdna/StarshipElements/blob/main/UsingIGV.md). Standard annotation tracks that need to be included are:
 a) Starship_alignments.gff. This shows where the known starships are located in the reference genome.
-b) PyStar.element.bed. This shows the positions of captains, terminal inverted repeats and direct repeats identified by STARFISH. If we look at the element on Arcadia2 chromosome 1 between positions 5,349,244 and 5,449,526, we can see that there is no corresponding element in the Starships.Arcadia2.paf track:
+b) [PyStar.element.bed](/data/PyStar.element.bed). This shows the positions of captains, terminal inverted repeats and direct repeats identified by STARFISH. If we look at the element on Arcadia2 chromosome 1 between positions 5,349,244 and 5,449,526, we can see that there is no corresponding element in the Starships.Arcadia2.paf track:
 
 ![NewStarship.png](/data/NewStarship.png)
 
