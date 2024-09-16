@@ -44,7 +44,7 @@ minimap2 B71v2sh.fasta Arcadia2.fasta -o Arcadia2.B71v2sh.paf
 
 ![CopySequence.png](/data/CopySequence.png)
 
-4. Open the Terminal program (Mac) or Powershell (PC) and create a text document named :
+4. Open the Terminal program (Mac) or Powershell (PC) and create a text document named NovelStarshipFlanks.fasta:
 ```bash
 nano NovelStarshipFlanks.fasta
 ```
