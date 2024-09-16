@@ -34,7 +34,7 @@ minimap2 B71v2sh.fasta Arcadia2.fasta -o Arcadia2.B71v2sh.paf
 # Characterize insertion targets of novel starship elements found by STARFISH
 1. Copy about 200 bp of sequence from each flank of the insertion site by zooming in on one flank so that one can see about 200 bp of flanking sequence (use the scale as a guide). Click on the Define Region tool:
 
-![DefineRegion.png](/data/DefineRegion.png)
+![Garbage3.png](/data/Garbage3.png)
 
 2. Click in the regions marked with plus symbols, making sure that the one side coincides precisely with the element border (zoom in further, if necessary).
 
@@ -46,4 +46,11 @@ minimap2 B71v2sh.fasta Arcadia2.fasta -o Arcadia2.B71v2sh.paf
 
 4. Open the Terminal program (Mac) or Powershell (PC) and create a text document named :
 ```bash
-nano
+nano NovelStarshipFlanks.fasta
+```
+5. Name the sequence, using fasta header format and paste in the copied sequence on the next line:
+
+![NanoDoc.png](/data/NanoDoc.png)
+
+6. Close the document using ctrl-x, type "y" to accept the filename and hit return to save the document.
+
