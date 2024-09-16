@@ -26,7 +26,7 @@ minimap2 B71v2sh.fasta Arcadia2.fasta -o Arcadia2.B71v2sh.paf
 
 7. Manually record the 10 nucleotides immediately flanking the starship insertion. Here, the flanking sequence is ACCGTGGGCC and the Starship border is AATATCGCTG.
 
-8. Zoom out until you see the right border and then Zoom in to see the nucleotide sequences around the border:
+8. Zoom out until you see the right border and then Zoom in to see the nucleotide sequences around that border:
 
 ![RightBorder.png](/data/RightBorder.png)
 
