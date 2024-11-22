@@ -65,3 +65,5 @@ perl Intact_5SrRNA_flanks.pl 5SrRNA.CD156.BLAST > CD156_5S_flanks.fasta
 ```
 # Exploration of Large Language Models for Gene Prediction
 Data for the B71 startship and the corresponding region of the 70-15 genome were processed through SegmentNT to produce output files, [SegmentNToutput_region_70-15.csv](/data/SegmentNToutput_region_70-15.csv) and [SegmentNToutput_region_B71.csv](/data/SegmentNToutput_region_B71.csv). These were plotted using the [SegmentNTplots.R](/scripts/SegmentNTplots.R) script. Predicted genes were added to the plot using [70-15_target_region.gff](/data/70-15_target_region.gff) and [B71_target_region.gff](/data/B71_target_region.gff) annotation files.
+
+![SegmentNTplot_B71.png](/data/SegmentNTplot_B71.png)
