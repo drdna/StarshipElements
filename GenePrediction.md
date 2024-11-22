@@ -63,3 +63,5 @@ for f in `ls MINION_GENOMES/*fasta`; do perl 5SrRNA_flanks.pl 5SrRNA.${f/_*/}.BL
 ```bash
 perl Intact_5SrRNA_flanks.pl 5SrRNA.CD156.BLAST > CD156_5S_flanks.fasta
 ```
+# Exploration of Large Language Models for Gene Prediction
+Data for the B71 startship and the corresponding region of the 70-15 genome were processed through SegmentNT to produce output files, [SegmentNT_70-15.csv](/data/SegmentNT_70-15.csv) and [SegmentNT_B71.csv](/data/SegmentNT_B71.csv). These were plotted using the [SegmentNT.R](/scripts/SegmentNT.R) script.
