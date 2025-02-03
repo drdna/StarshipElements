@@ -1,5 +1,5 @@
 # Starship mobilization
-Starship mobilization is expected to produce extrachromosomal molecules and possibly result in the excision of an element from its 5S rRNA gene target. Extrachromosomal transposoition intermediates could be in linear or circular forms. Element excision is expected to reconsititute an intact (empty) 5S rrNA gene because we have not found any "empty" 5S rRNA genes with target site duplications in the genomes analyzed thus far.
+Starship mobilization is expected to produce extrachromosomal molecules and possibly result in the excision of an element from its 5S rRNA gene target. Extrachromosomal transposition intermediates could be in linear or circular forms. Element excision is expected to reconsititute an intact (empty) 5S rrNA gene because we have not found any "empty" 5S rRNA genes with target site duplications in the genomes analyzed thus far.
 
 ## Detecting extrachromosomal elements
 1. Create database of sequence structures expected from starship excision ([Extrachromosomal_starships.fasta](/data/Extrachromosomal_starships.fasta)).
