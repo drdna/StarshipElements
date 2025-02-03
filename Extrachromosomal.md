@@ -12,7 +12,7 @@ where:
 ($2 - $4 < 20 && $8 < 20 && $5 == "-") identifies reads where the end coincides with the left or right border
 ($11 > 3000) identifies reads that span a fused left/right border
 
-## Detecting recent starship excisions;
+## Detecting recent starship excisions
 1. Generate database of sequences expected when each starship present in a genome excises from its 5S rRNA gene target. Select 1 kb flanking the insertion position in the 5S rRNA gene (e.g. [Arcadia2_popouts.fasta](/data/Arcadia2_popouts.fasta))
 2. Align raw Nanopore reads (fastq or fasta format) to these structures and filter results to identify reads that span the empty 5S rRNA targets:
 ```bash
