@@ -16,5 +16,5 @@ where:
 1. Generate database of sequences expected when each starship present in a genome excises from its 5S rRNA gene target. Select 1 kb flanking the insertion position in the 5S rRNA gene (e.g. [Arcadia2_popouts.fasta](/data/Arcadia2_popouts.fasta))
 2. Align raw Nanopore reads (fastq or fasta format) to these structures and filter results to identify reads that span the empty 5S rRNA targets:
 ```bash
-minimap2 /pscratch/farman_uksr/Extrachromosomal_starships.fasta US71_nanopore.fastq.gz | awk '$11 > 1500'
+minimap2 /pscratch/farman_uksr/Extrachromosomal_starships.fasta Arcadia2_nanopore.fastq.gz | awk '$11 > 1500'
 ```
