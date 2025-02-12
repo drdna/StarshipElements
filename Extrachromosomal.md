@@ -40,7 +40,7 @@ If it doesn't work, specify the exact path to where the tools is installed (eg. 
 
 3. Go back to the terminal window and download the relevant dataset:
 ```bash
-fastq-dump ERRXXXXXXXX --gzip
+fastq-dump ERR3602158 --gzip
 ```
 (don't close the terminal window until the data are completely transferred)
 
