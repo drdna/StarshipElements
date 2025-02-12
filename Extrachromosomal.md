@@ -4,6 +4,9 @@ Starship mobilization is expected to produce extrachromosomal molecules and poss
 ## Detecting extrachromosomal elements
 1. Create database of sequence structures expected from starship excision ([Extrachromosomal_starships.fasta (/data/Extrachromosomal_starships.fasta)).
 
+## Download Project fastq datasets from Teams directory
+1. Visit this link and request access if needed (https://luky.sharepoint.com/:f:/r/sites/FarmanLab2/Shared%20Documents/CorrectedReads?csf=1&web=1&e=7DTVJX)
+
 ## Download fastq datasets from NCBI
 1. Download correct version of the SRA toolkit from NCBI (https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit)
 2. Install SRA toolkit on your local machine (https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit)
