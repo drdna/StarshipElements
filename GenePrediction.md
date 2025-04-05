@@ -22,6 +22,7 @@ perl DeRIP.pl B71Starships.CEUZ.BLAST B71Starship_masked.fasta
 This produced the DeRIP'd sequence: [B71StarshipMaskedDeRIPd.fasta](/data/B71StarshipMaskedDeRIPd.fasta)
 
 ## Gene prediction in Starship Transposons
+### Fgenesh
 1. mRNA transcript and protein sequences were extracted from the Fgenesh output files using the [Fgenesh_to_mRNA_protein.pl](/scripts/Fgenesh_to_mRNA_protein.pl) script:
 ```bash
 perl path/to/Fgenesh_to_mRNA_protein.pl path/to/B71Starship.fgenesh.out
@@ -32,7 +33,13 @@ This produces two output files. One with the the transcript sequences and the ot
 perl fgenesh2gff.pl <fegenesh_outfile>
 ```
 3. The protein sequences were use to search NCBI using blastp
+### MAKER
 
+
+## Functional annotation using eggnog-mapper
+```bash
+fasta="Bm88324_SSproteins_nh.fasta"; for f in $(grep ">" $fasta | sed 's/>//'); do samtools faidx $fasta $f > ${f/:/_}.fasta; singularity run --app eggnogmapper2112 /share/singularity/images/ccs/conda/amd-conda22-rocky9.sinf emapper.py -i ${f/:/_}.fasta -o MyProtein2 --cpu 8 --override; done
+```
 ## Identification of secreted proteins among starship cargo:
 
 1. [Multifasta files](/data/StarshipFastas/) for each starship element were uploaded into the [SignalP6 server](https://services.healthtech.dtu.dk/service.php?SignalP) for identification of candidate secreted proteins.
