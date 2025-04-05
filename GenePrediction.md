@@ -38,7 +38,7 @@ perl fgenesh2gff.pl <fegenesh_outfile>
 
 ## Functional annotation using eggnog-mapper
 ```bash
-fasta="Bm88324_SSproteins_nh.fasta"; for f in $(grep ">" $fasta | sed 's/>//'); do samtools faidx $fasta $f > ${f/:/_}.fasta; singularity run --app eggnogmapper2112 /share/singularity/images/ccs/conda/amd-conda22-rocky9.sinf emapper.py -i ${f/:/_}.fasta -o MyProtein2 --cpu 8 --override; done
+fasta="Bm88324_SSproteins_nh.fasta"; for f in $(grep ">" $fasta | sed 's/>//'); do samtools faidx $fasta $f > ${f/:/_}.fasta; singularity run --app eggnogmapper2112 /share/singularity/images/ccs/conda/amd-conda22-rocky9.sinf emapper.py -i ${f/:/_}.fasta -o ${f/:/_} --cpu 8 --override; done
 ```
 ## Identification of secreted proteins among starship cargo:
 
