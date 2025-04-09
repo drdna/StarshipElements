@@ -1,5 +1,35 @@
 # Starship Gene Predictions
 
+## Repeat masking of Starship transposons for Funannotate
+1. Blast MoRepeat.fasta file against the 25PolishedSS.fasta file
+```bash
+blastn -query MoRepeats.fasta -subject 25PolishedSS.fasta -outfmt '6 qseqid sseqid qstart qend sstart send btop' > MoRepeats.25PolishedSS.BLAST
+```
+2. Run CrossMaskLC.pl script:
+```bash
+perl CrossMaskLC.pl MoRepeats.25PolishedSS.BLAST 25PolishedSS.fasta > 25PolishedSS_masked.fasta
+```
+3. Rename headers for Funannotate:
+```bash
+perl SimpleFastaHeaders_SB.pl 25PolishedSS_masked.fasta 25ss.fasta
+mv 25ss_nh.fasta 25SS.fasta
+```
+## Funannotate Setup
+
+## Funannotate Train
+
+## Funannotate Predict
+
+## Funannotate Update
+
+## eggnog-mapper
+
+## Phobius
+
+## antismash
+
+## Funannotate annotate
+
 ## DeRIP'ing a presumed full-length element that is present in several genomes
 The B71 genome contains a large Starship element that is 349.5 kb in length but genome comparisons using BLAST searches revealed a large number of transition mutations. Comparison with progenitor strains revealed that most of these mutations arose in a series of recent matings that ultimately resulted in the evolution of the wheat blast pathogen and in doing so identified Repeat-Induced Point mutation (RIP) as the mutational process. By its nature, RIP increases the AT-content of its target sequences, which in turn results in the generation of a large number of premature stop codons that negatively impact the prediction of genes within the Starship elements. Therefore, we sought to De-RIP a canonical element in B71. Briefly, we masked high copy sequences corresponding to other transposon "hitchhikers" within the Starship sequence and then BLASTed the masked element against several *P. oryzae* genome assemblies. Then, we used a custom script to convert As and Ts back to Gs and Cs, respectively, but only if there were at least 10 BLAST alignments that supported the presence of a G/C at the position in question.
 
