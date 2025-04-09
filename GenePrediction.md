@@ -15,17 +15,31 @@ perl SimpleFastaHeaders_SB.pl 25PolishedSS_masked.fasta 25ss.fasta
 mv 25ss_nh.fasta 25SS.fasta
 ```
 ## Funannotate Setup
-
+```bash
+funannotate setup -i all --update
+```
 ## Funannotate Train
-
+```bash
+singularity run --app funannotate1817 /share/singularity/images/ccs/conda/amd-conda22-rocky9.sinf \
+  funannotate train -i $genome -o funannotate --single $forwardreads --jaccard_clip --species "Pyricularia oryzae" --strain FR13 --cpus 16
+```
 ## Funannotate Predict
-
+```bash
+singularity run --app funannotate1817 /share/singularity/images/ccs/conda/amd-conda22-rocky9.sinf \
+  funannotate predict -i $genome -o $outdir -s $species --strain $strain --augustus_species magnaporthe_grisea --cpus 16
+```
 ## Funannotate Update
-
+```bash
+funannotate update -i funannotate --cpus 16
+```
 ## eggnog-mapper
-
+```bash
+emapper.py -i $fasta -o $outfile --cpu 32 --override
+```
 ## Phobius
-
+```bash
+  perl jphobius_models/phobius/phobius.pl -long /scratch/farman/24NewSS_maker.proteins.fasta 2>/dev/null > 24NewSSphobius.txt
+```
 ## antismash
 
 ## Funannotate annotate
