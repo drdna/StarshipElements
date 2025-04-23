@@ -41,9 +41,24 @@ emapper.py -i $fasta -o $outfile --cpu 32 --override
   perl jphobius_models/phobius/phobius.pl -long /scratch/farman/24NewSS_maker.proteins.fasta 2>/dev/null > 24NewSSphobius.txt
 ```
 ## antismash
-
+```bash
+sbatch antismash.sh /scratch/farman/24NewSS_maker.proteins.fasta
+```
 ## Funannotate annotate
 
+## Summarizing Gene Content
+Determine how many distinct genes are contained on starships and their distribution across elements:
+`bash
+blastn -query 25SS_genes.fasta -subject 25SSgenes.fasta -outfmt 6 > 25SSgenes.25SSgenes.BLAST
+```
+Group genes based on BLAST overlaps:
+```bash
+python UniqueSSgenes.py
+```
+This identified 216 gene groups but revealed some genes with 63 distinct blast matches (>> number of starships). This suggested that some genes were mis-predicted and bridged intergeneic spaces between genes. Therefore, we examined annotations for members of each cluster to identify possible gene merging (e.g.):
+```bash
+echo "FUN_000018, FUN_000034, FUN_000035, FUN_000100, FUN_000102, FUN_000104, FUN_000105, FUN_000112, FUN_000128, FUN_000129, FUN_000133, FUN_000137, FUN_000142, FUN_000158, FUN_000159, FUN_000181, FUN_000248, FUN_000249, FUN_000261, FUN_000310, FUN_000314, FUN_000320, FUN_000325, FUN_000329, FUN_000339, FUN_000347, FUN_000348, FUN_000409, FUN_000434, FUN_000435, FUN_000550, FUN_000577, FUN_000606, FUN_000607" | tr -d ' ' | tr ',' '\n' | xargs -I{} grep {} 25SSnewPredict.proteins.emapper.annotations
+```
 ## DeRIP'ing a presumed full-length element that is present in several genomes
 The B71 genome contains a large Starship element that is 349.5 kb in length but genome comparisons using BLAST searches revealed a large number of transition mutations. Comparison with progenitor strains revealed that most of these mutations arose in a series of recent matings that ultimately resulted in the evolution of the wheat blast pathogen and in doing so identified Repeat-Induced Point mutation (RIP) as the mutational process. By its nature, RIP increases the AT-content of its target sequences, which in turn results in the generation of a large number of premature stop codons that negatively impact the prediction of genes within the Starship elements. Therefore, we sought to De-RIP a canonical element in B71. Briefly, we masked high copy sequences corresponding to other transposon "hitchhikers" within the Starship sequence and then BLASTed the masked element against several *P. oryzae* genome assemblies. Then, we used a custom script to convert As and Ts back to Gs and Cs, respectively, but only if there were at least 10 BLAST alignments that supported the presence of a G/C at the position in question.
 
