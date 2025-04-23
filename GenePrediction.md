@@ -48,7 +48,7 @@ sbatch antismash.sh /scratch/farman/24NewSS_maker.proteins.fasta
 
 ## Summarizing Gene Content
 Determine how many distinct genes are contained on starships and their distribution across elements:
-`bash
+```bash
 blastn -query 25SS_genes.fasta -subject 25SSgenes.fasta -outfmt 6 > 25SSgenes.25SSgenes.BLAST
 ```
 Group genes based on BLAST overlaps:
@@ -58,6 +58,10 @@ python UniqueSSgenes.py
 This identified 216 gene groups but revealed some genes with as many as 63 distinct blast matches (>> number of starships). This suggested that some genes were mis-predicted and bridged intergenic spaces between genes. Therefore, we examined annotations for members of each cluster to identify possible gene merging (e.g.):
 ```bash
 echo "FUN_000018, FUN_000034, FUN_000035, FUN_000100, FUN_000102, FUN_000104, FUN_000105, FUN_000112, FUN_000128, FUN_000129, FUN_000133, FUN_000137, FUN_000142, FUN_000158, FUN_000159, FUN_000181, FUN_000248, FUN_000249, FUN_000261, FUN_000310, FUN_000314, FUN_000320, FUN_000325, FUN_000329, FUN_000339, FUN_000347, FUN_000348, FUN_000409, FUN_000434, FUN_000435, FUN_000550, FUN_000577, FUN_000606, FUN_000607" | tr -d ' ' | tr ',' '\n' | xargs -I{} grep {} 25SSnewPredict.proteins.emapper.annotations
+```
+We further examined overlaps by mapping predicted genes to the starships using minimap2:
+```bash
+minimap2 25SS_genes.fasta 25SS.fasta > 25SSgenes.25SS.paf
 ```
 Merged genes were then manually split to determine final counts.
 ## DeRIP'ing a presumed full-length element that is present in several genomes
