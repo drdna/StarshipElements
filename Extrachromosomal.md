@@ -60,6 +60,7 @@ where:
 
 ## Detecting recent starship excisions
 1. Generate database of sequences expected when each starship present in a genome excises from its 5S rRNA gene target
+   
     a. Use table of starship coordinates to find each starship insertion in IGV browser
     b. Select 500 bp of sequence flanking the left starship border
     c. Select 500 bp of sequence flanking the right starship border
