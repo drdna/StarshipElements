@@ -60,11 +60,11 @@ where:
 
 ## Detecting recent starship excisions
 1. Generate database of sequences expected when each starship present in a genome excises from its 5S rRNA gene target
-  a. Use table of starship coordinates to find each starship insertion in IGV browser
-  b. Select 500 bp of sequence flanking the left starship border
-  c. Select 500 bp of sequence flanking the right starship border
-  d. Join the two borders together to create a 1 kb sequence that resembles the structure produced if the element were to excise
-  e. Repeat for all starships in the genome
+    a. Use table of starship coordinates to find each starship insertion in IGV browser
+    b. Select 500 bp of sequence flanking the left starship border
+    c. Select 500 bp of sequence flanking the right starship border
+    d. Join the two borders together to create a 1 kb sequence that resembles the structure produced if the element were to excise
+    e. Repeat for all starships in the genome
 3. Select 1 kb flanking the insertion position in the 5S rRNA gene (e.g. [Arcadia2_popouts.fasta](/data/Arcadia2_popouts.fasta))
 4. Align raw Nanopore reads (fastq or fasta format) to these structures and filter results to identify reads that span the empty 5S rRNA targets:
 ```bash
