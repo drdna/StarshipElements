@@ -7,7 +7,7 @@ Starship mobilization is expected to produce extrachromosomal molecules and poss
 ## Download Project fastq datasets from Teams directory
 1. Visit this link and request access if needed (https://luky.sharepoint.com/:f:/r/sites/FarmanLab2/Shared%20Documents/CorrectedReads?csf=1&web=1&e=7DTVJX)
 
-## Download data from Teams Drive
+## Download fastq data from Teams Drive
 https://luky.sharepoint.com/sites/FarmanLab2/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FFarmanLab2%2FShared%20Documents%2FRAW%5FNANOPORE%5FDATA&viewid=dc238588%2Ddb89%2D4df9%2Da19e%2Dcb3beaac2f3a
 
 ## or...
