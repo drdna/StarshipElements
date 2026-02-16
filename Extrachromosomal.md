@@ -53,10 +53,13 @@ fastq-dump ERR3602158 --gzip
 ```bash
 minimap2 /pscratch/farman_uksr/Extrachromosomal_starships.fasta US71_nanopore.fastq.gz | awk '($3 < 20 && $8 < 20 && $5 == "+") || ($2 - $4 <20 && $8<20 && $5 == "-") || ($11 > 3000)'
 ```
-where:
-($3 < 20 && $8 < 20 && $5 == "+") identifies reads where the start coincides with the left or right border
-($2 - $4 < 20 && $8 < 20 && $5 == "-") identifies reads where the end coincides with the left or right border
-($11 > 3000) identifies reads that span a fused left/right border
+Note:
+
+   - ($3 < 20 && $8 < 20 && $5 == "+") identifies reads where the start coincides with the left or right border
+
+   - ($2 - $4 < 20 && $8 < 20 && $5 == "-") identifies reads where the end coincides with the left or right border
+
+   - ($11 > 3000) identifies reads that span a fused left/right border
 
 ## Detecting recent starship excisions
 1. Generate database of sequences expected when each starship present in a genome excises from its 5S rRNA gene target
