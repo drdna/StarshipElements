@@ -51,7 +51,7 @@ fastq-dump ERR3602158 --gzip
 ## Identify linear/circular extrachromosomal starship molecules
 1. Align raw Nanopore reads (fastq or fasta format) to a file of sequences ([Extrachromosomal_starships.fasta](/data/Extrachromosomal_starships.fasta)) corresponding to extrachromosomal starship molecules and filter results to identify reads whose starts/ends coincide with starship borders, or span a left border/right border junction that would be expected from a circularized molecule:
 ```bash
-minimap2 /pscratch/farman_uksr/Extrachromosomal_starships.fasta US71_nanopore.fastq.gz | awk '($3 < 20 && $8 < 20 && $5 == "+") || ($2 - $4 <20 && $8<20 && $5 == "-") || ($11 > 3000)'
+minimap2 /pscratch/farman_uksr/Extrachromosomal_starships.fasta US71_nanopore.fastq.gz | awk '($3 < 50 && $8 < 50 && $5 == "+") || ($2 - $4 <50 && $7 - $9<50 && $5 == "-") || ($11 > 2000)'
 ```
 Note:
 
