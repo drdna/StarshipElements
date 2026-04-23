@@ -8,7 +8,7 @@ Starship elements display remarkable strain-to-strain variation in their occupan
 ```bash
 perl Starship_flanks.pl Starship_coordinates.txt
 ```
-2. Run [FACET[(https://github.com/drdna/FACET) to align starship flank sequences to each genome (in no clean/GFF format):
+2. Run [FACET](https://github.com/drdna/FACET) to align starship flank sequences to each genome (in no clean/GFF format):
 ```bash
 for f in `ls MINION_GENOMES/*nh.fasta`; do FACET db_free $f Starship_flanks.fasta -nc -g; done
 ```
