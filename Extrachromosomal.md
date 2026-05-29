@@ -72,8 +72,8 @@ Note:
     d. Join the two borders together to create a 1 kb sequence that resembles the structure produced if the element were to excise
    
     e. Repeat for all starships in the genome
-3. Select 1 kb flanking the insertion position in the 5S rRNA gene (e.g. [Arcadia2_popouts.fasta](/data/Arcadia2_popouts.fasta))
+3. Select 1 kb flanking the insertion position in the 5S rRNA gene (e.g. [NonRedundant5SrRNAgenes.fasta](/data/NonRedundant5SrRNAgenes.fasta))
 4. Align raw Nanopore reads (fastq or fasta format) to these structures and filter results to identify reads that span the empty 5S rRNA targets:
 ```bash
-minimap2 /pscratch/farman_uksr/Arcadia_popouts.fasta Arcadia2_nanopore.fastq.gz | awk '$11 > 1500'
+minimap2 /pscratch/farman_uksr/Arcadia_popouts.fasta Arcadia2_nanopore.fastq.gz | awk '$11 > 450'
 ```
