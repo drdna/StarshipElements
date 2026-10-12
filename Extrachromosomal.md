@@ -45,7 +45,18 @@ fastq-dump ERR3602158 --gzip
 ```
 (don't close the terminal window until the data are completely transferred)
 
-## Identify linear/circular extrachromosomal starship molecules
+## Identifying linear/circular extrachromosomal starship molecules using BLAST
+1. Convert fastq reads to fasta format using the command line:
+```bash
+awk 'NR%4==1 || NR%4==2 {print}' | sed 's/^@/>/' MyData.fastq > MyData.fasta
+```
+2. Align fasta reads to a file of sequences ([Extrachromosomal_starships.fasta](/data/Extrachromosomal_starships.fasta)) corresponding to extrachromosomal starship molecules:
+```bash
+blastn -query MyData.fasta -subject /path/to/Extrachromosomal_starships.fasta -outfmt '6 qseqid sseqid qlen length qstart qend sstart send' > MyData.Extrachromosomal.BLAST
+```
+3. Filter results to identify reads whose starts/ends coincide with starship borders, or span a left border/right border junction that would be expected from a circularized molecule:
+
+## Identifying linear/circular extrachromosomal starship molecules using minimap2
 1. Align raw Nanopore reads (fastq or fasta format) to a file of sequences ([Extrachromosomal_starships.fasta](/data/Extrachromosomal_starships.fasta)) corresponding to extrachromosomal starship molecules and filter results to identify reads whose starts/ends coincide with starship borders, or span a left border/right border junction that would be expected from a circularized molecule:
 ```bash
 minimap2 /pscratch/farman_uksr/Extrachromosomal_starships.fasta US71_nanopore.fastq.gz | awk '($6 ~ /border/ && ($5 == "+" && $3 < 40 && $8 < 40 || $5 == "-" && $2 - $4 < 40 && $8 < 40)) || ($11 > 2000) && $6 == "Circular"'
